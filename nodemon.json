@@ -1,0 +1,4 @@
+{
+  "exec": "PFX_BASE64=$(base64 -i https.p12) node server.js",
+  "watch": ["server.js"]
+}

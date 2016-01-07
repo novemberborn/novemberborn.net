@@ -7,6 +7,7 @@
     "clean": "rimraf server.js server.js.map",
     "prebuild": "npm run clean",
     "build": "babel src --out-dir ./ --source-maps",
+    "nodemon": "nodemon",
     "test": "standard"
   },
   "repository": {
@@ -24,6 +25,7 @@
     "babel-plugin-handlebars-inline-precompile": "^2.1.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.4.0",
     "babel-plugin-transform-strict-mode": "^6.3.13",
+    "nodemon": "^1.8.1",
     "rimraf": "^2.5.0",
     "standard": "^5.4.1"
   },
