@@ -2,6 +2,7 @@
   "compact": false,
   "plugins": [
     "handlebars-inline-precompile",
+    "transform-es2015-destructuring",
     "transform-es2015-modules-commonjs",
     "transform-strict-mode"
   ]
