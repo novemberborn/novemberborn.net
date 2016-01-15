@@ -6,4 +6,5 @@ node_modules
 /server.js
 /server.js.map
 /lib
+/static
 /templates
