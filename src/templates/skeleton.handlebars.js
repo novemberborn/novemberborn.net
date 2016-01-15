@@ -8,6 +8,8 @@ export default hbs`<!doctype html>
     <title>{{#if title}}{{title}} — {{/if}}novemberborn.net</title>
   </head>
 
-  <body>Hello world</body>
+  <body>
+    {{> (lookup . 'contentPartial')}}
+  </body>
 </html>
 `
