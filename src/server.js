@@ -1,6 +1,8 @@
 import { createServer } from 'https'
 import { parse as parseUrl } from 'url'
 
+import sourceMapSupport from 'source-map-support'
+
 import { PFX_BASE64 } from './lib/env'
 import { route } from './lib/router'
 
@@ -10,6 +12,8 @@ const errorBody = new Buffer(skeleton({
   title: '500 Internal Server Error',
   contentPartial: serverError
 }), 'utf8')
+
+sourceMapSupport.install({ handleUncaughtExceptions: false })
 
 createServer({ pfx: new Buffer(PFX_BASE64, 'base64') }, (req, res) => {
   try {
@@ -21,7 +25,7 @@ createServer({ pfx: new Buffer(PFX_BASE64, 'base64') }, (req, res) => {
     res.end()
   } catch (err) {
     // TODO: Hook up Bunyan
-    console.error(err)
+    console.error(err && err.stack || err)
 
     if (!res.headersSent) {
       res.writeHead(500)
@@ -40,7 +44,7 @@ function handleRequest (req) {
     return route(pathname)
   } catch (err) {
     // TODO: Hook up Bunyan
-    console.error(err)
+    console.error(err && err.stack || err)
 
     return [500, {
       'content-type': 'text/html; charset=utf-8',

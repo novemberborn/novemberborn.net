@@ -33,7 +33,8 @@
   },
   "dependencies": {
     "dotenv": "^1.2.0",
-    "handlebars": "^4.0.5"
+    "handlebars": "^4.0.5",
+    "source-map-support": "^0.4.0"
   },
   "standard": {
     "parser": "babel-eslint"
