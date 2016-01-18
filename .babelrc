@@ -3,6 +3,7 @@
   "plugins": [
     "handlebars-inline-precompile",
     "import-glob",
+    "transform-async-to-generator",
     "transform-es2015-destructuring",
     "transform-es2015-modules-commonjs",
     "transform-strict-mode"

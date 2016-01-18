@@ -15,9 +15,9 @@ const errorBody = new Buffer(skeleton({
 
 sourceMapSupport.install({ handleUncaughtExceptions: false })
 
-createServer({ pfx: new Buffer(PFX_BASE64, 'base64') }, (req, res) => {
+createServer({ pfx: new Buffer(PFX_BASE64, 'base64') }, async (req, res) => {
   try {
-    const [statusCode, headers, body] = handleRequest(req)
+    const [statusCode, headers, body] = await handleRequest(req)
     res.writeHead(statusCode, headers)
     if (req.method !== 'HEAD') {
       res.write(body)
@@ -34,14 +34,14 @@ createServer({ pfx: new Buffer(PFX_BASE64, 'base64') }, (req, res) => {
   }
 }).listen(8443)
 
-function handleRequest (req) {
+async function handleRequest (req) {
   if (req.method !== 'GET' && req.method !== 'HEAD') {
     return [405]
   }
 
   try {
     const { pathname } = parseUrl(req.url)
-    return route(pathname)
+    return await route(pathname)
   } catch (err) {
     // TODO: Hook up Bunyan
     console.error(err && err.stack || err)

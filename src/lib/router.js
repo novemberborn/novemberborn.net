@@ -12,7 +12,7 @@ const table = {
   }
 }
 
-export function route (pathname) {
+export async function route (pathname) {
   if (staticFiles.has(pathname)) {
     const { contentType, chunk } = staticFiles.get(pathname)
     return [200, {
@@ -28,7 +28,7 @@ export function route (pathname) {
 
   let context
   if (table.hasOwnProperty(pathname)) {
-    context = table[pathname]()
+    context = await table[pathname]()
   } else {
     statusCode = 404
     context = { contentPartial: notFound }
