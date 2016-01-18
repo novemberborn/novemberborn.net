@@ -21,6 +21,11 @@ export async function route (pathname) {
     }, chunk]
   }
 
+  // Redirect away from pathnames ending in a slash.
+  if (pathname !== '/' && pathname.endsWith('/')) {
+    return [301, { location: pathname.slice(0, -1) }]
+  }
+
   let statusCode = 200
   let headers = {
     'content-type': 'text/html; charset=utf-8'
