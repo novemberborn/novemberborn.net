@@ -1,4 +1,4 @@
-import staticFiles from '../static'
+import { routes as staticRoutes } from './static-files'
 
 import {
   home,
@@ -13,11 +13,11 @@ const table = {
 }
 
 export async function route (pathname) {
-  if (staticFiles.has(pathname)) {
-    const { contentType, chunk } = staticFiles.get(pathname)
+  if (staticRoutes.has(pathname)) {
+    const [chunk, { contentType, contentLength }] = await staticRoutes.get(pathname)
     return [200, {
       'content-type': contentType,
-      'content-length': chunk.length
+      'content-length': contentLength
     }, chunk]
   }
 
