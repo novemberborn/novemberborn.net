@@ -7,6 +7,7 @@
     "clean": "rimraf server.js server.js.map lib templates",
     "prebuild": "npm run clean",
     "build": "babel src --out-dir ./ --source-maps",
+    "build:watch": "nodemon -w content -e md -x 'babel src --out-dir ./ --source-maps --watch'",
     "nodemon": "nodemon",
     "test": "standard"
   },
@@ -35,7 +36,10 @@
   },
   "dependencies": {
     "dotenv": "^1.2.0",
+    "find-cache-dir": "^0.1.1",
     "handlebars": "^4.0.5",
+    "mkdirp": "^0.5.1",
+    "remarkable": "^1.6.1",
     "source-map-support": "^0.4.0"
   },
   "standard": {
