@@ -1,0 +1,9 @@
+{
+  "use": ["postcss-normalize", "cssnano"],
+  "cssnano": {
+    "autoprefixer": false,
+    "discardComments": {
+      "removeAll": true
+    }
+  }
+}

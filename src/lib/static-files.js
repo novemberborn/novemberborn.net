@@ -2,12 +2,21 @@ import { readFile } from 'fs'
 
 import files from 'files:../../static/*.*'
 
-const paths = new Map().set('/favicon.ico', files['favicon.ico'])
+const paths = new Map()
+const inverse = new Map()
 for (const name in files) {
-  if (name === 'favicon.ico') continue
-
   const file = files[name]
-  paths.set(`/static/${file.tag}/${name}`, file)
+
+  let path = `/static/${file.tag}/${name}`
+  if (name === 'favicon.ico') {
+    path = '/favicon.ico'
+  } else if (name.endsWith('.map')) {
+    // Source maps are relative to the tag of the file they apply to.
+    const { tag } = files[name.slice(0, -4)]
+    path = `/static/${tag}/${name}`
+  }
+  paths.set(path, file)
+  inverse.set(name, path)
 }
 
 const cacheSymbol = Symbol
@@ -30,6 +39,11 @@ export const routes = {
 
   async get (pathname) {
     const file = paths.get(pathname)
-    return [await getContents(file), file]
+    const contents = await getContents(file)
+    return [contents, file]
   }
+}
+
+export function getPath (name) {
+  return inverse.get(name)
 }

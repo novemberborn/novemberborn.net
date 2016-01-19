@@ -4,12 +4,13 @@
   "version": "2.0.0",
   "description": "Behind the scenes of https://novemberborn.net/",
   "scripts": {
-    "clean": "rimraf server.js server.js.map lib templates",
+    "clean": "rimraf server.js server.js.map lib templates static/style.css static/style.css.map",
     "prebuild": "npm run clean",
-    "build": "babel src --out-dir ./ --source-maps",
-    "build:watch": "nodemon -w content -e md -x 'babel src --out-dir ./ --source-maps --watch'",
+    "build": "npm run build:css && babel src --out-dir ./ --source-maps",
+    "build:css": "postcss -o static/style.css -m file -c postcss.json src/style.css",
+    "build:watch": "nodemon -w content -w src -e 'md css' -x 'npm run build:css && babel src --out-dir ./ --source-maps --watch'",
     "nodemon": "nodemon",
-    "test": "standard"
+    "test": "standard && stylelint src/**/*.css"
   },
   "repository": {
     "type": "git",
@@ -30,9 +31,14 @@
     "babel-plugin-transform-es2015-destructuring": "^6.4.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.4.0",
     "babel-plugin-transform-strict-mode": "^6.3.13",
+    "cssnano": "^3.4.0",
     "nodemon": "^1.8.1",
+    "postcss-cli": "^2.4.0",
+    "postcss-normalize": "^0.1.2",
     "rimraf": "^2.5.0",
-    "standard": "^5.4.1"
+    "standard": "^5.4.1",
+    "stylelint": "^3.2.3",
+    "stylelint-config-standard": "^0.2.0"
   },
   "dependencies": {
     "dotenv": "^1.2.0",

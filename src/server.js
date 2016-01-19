@@ -5,12 +5,14 @@ import sourceMapSupport from 'source-map-support'
 
 import { PFX_BASE64 } from './lib/env'
 import { route } from './lib/router'
+import { getPath } from './lib/static-files'
 
 import { skeleton, serverError } from 'glob:templates/*.js'
 
 const errorBody = new Buffer(skeleton({
   title: '500 Internal Server Error',
-  contentPartial: serverError
+  contentPartial: serverError,
+  cssUrl: getPath('style.css')
 }), 'utf8')
 
 sourceMapSupport.install({ handleUncaughtExceptions: false })

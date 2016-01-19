@@ -7,3 +7,6 @@ node_modules
 /server.js.map
 /lib
 /templates
+
+/static/style.css
+/static/style.css.map

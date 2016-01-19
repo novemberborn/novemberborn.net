@@ -1,4 +1,4 @@
-import { routes as staticRoutes } from './static-files'
+import { routes as staticRoutes, getPath } from './static-files'
 import { render as renderContent } from './content'
 
 import {
@@ -43,7 +43,10 @@ export async function route (pathname) {
     context = { contentPartial: notFound }
   }
 
-  const body = new Buffer(skeleton(context), 'utf8')
+  const expandedContext = Object.assign({
+    cssUrl: getPath('style.css')
+  }, context)
+  const body = new Buffer(skeleton(expandedContext), 'utf8')
   headers['content-length'] = body.length
 
   return [statusCode, headers, body]

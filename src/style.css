@@ -1,0 +1,26 @@
+body {
+  padding: 0 1rem 1rem;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  line-height: 1.4;
+  color: #333;
+}
+
+.root {
+  margin: 0 auto;
+  max-width: 28rem;
+
+  /* Assume standard font-size of 16px, meaning the body has 32px horizontal
+  padding. Target minimum width of 320px (iPhone 4). */
+  min-width: 288px;
+}
+
+h1,
+h2 {
+  font-weight: normal;
+  margin: 1rem 0;
+}
+
+img {
+  width: 100%;
+}
