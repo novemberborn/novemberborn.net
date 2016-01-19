@@ -1,4 +1,5 @@
 import { routes as staticRoutes } from './static-files'
+import { render as renderContent } from './content'
 
 import {
   home,
@@ -7,8 +8,11 @@ import {
 } from 'glob:../templates/*.js'
 
 const table = {
-  '/' () {
-    return { contentPartial: home }
+  async '/' () {
+    return {
+      contentPartial: home,
+      content: await renderContent('home')
+    }
   }
 }
 
