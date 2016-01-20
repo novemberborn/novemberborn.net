@@ -8,6 +8,7 @@ export default hbs`<!doctype html>
     <title>{{#if title}}{{title}} — {{/if}}novemberborn.net</title>
     <link rel="stylesheet" href="{{cssUrl}}">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="apple-touch-icon-precomposed" href="/static/2036c18c90f28301128b72a66147de93/favicon-152.png">
   </head>
 
   <body data-pathname="{{pathname}}">
