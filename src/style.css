@@ -15,6 +15,10 @@ body {
   min-width: 288px;
 }
 
+.invert {
+  filter: invert(100%);
+}
+
 h1,
 h2 {
   font-weight: normal;

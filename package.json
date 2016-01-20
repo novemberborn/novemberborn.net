@@ -22,6 +22,7 @@
   "homepage": "https://github.com/novemberborn/novemberborn.net#readme",
   "license": "UNLICENSED",
   "devDependencies": {
+    "autoprefixer": "^6.3.1",
     "babel-cli": "^6.4.0",
     "babel-eslint": "^5.0.0-beta6",
     "babel-plugin-files": "^0.1.0",
