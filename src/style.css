@@ -35,7 +35,7 @@ header {
       text-decoration: underline;
     }
 
-    body[data-pathname="/about"] &[href="/about"],
+    body[data-pathname="/colophon"] &[href="/colophon"],
     body[data-pathname="/skills-and-background"] &[href="/skills-and-background"],
     body[data-pathname^="/projects"] &[href="/projects"] {
       background: #fff85f;

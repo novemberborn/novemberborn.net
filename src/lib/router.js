@@ -16,9 +16,9 @@ const table = {
       content: await renderContent('home')
     }
   },
-  async '/about' () {
+  async '/colophon' () {
     return {
-      content: await renderContent('about')
+      content: await renderContent('colophon')
     }
   },
   async '/projects' () {

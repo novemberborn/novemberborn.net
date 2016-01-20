@@ -16,7 +16,7 @@ gig. Priority podcast listens are [This American
 Life](http://www.thisamericanlife.org/) & [The Talk
 Show](http://daringfireball.net/thetalkshow/).
 
-[Read about how this site is built](/about).
+[Read about how this site is built](/colophon).
 
 ## Skills & Background
 

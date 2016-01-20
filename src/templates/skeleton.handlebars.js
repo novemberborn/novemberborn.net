@@ -14,9 +14,9 @@ export default hbs`<!doctype html>
     <header>
       <h1><a href="/">novemberborn.net</a></h1>
       <nav>
-        <a href="/about">About</a>,
         <a href="/skills-and-background">Skills &amp; Background</a>,
-        <a href="/projects">Projects</a>
+        <a href="/projects">Projects</a>,
+        <a href="/colophon">Colophon</a>
       </nav>
     </header>
 
