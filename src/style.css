@@ -71,6 +71,13 @@ main {
       color: #ec2965;
     }
   }
+
+  hr {
+    margin: 5rem auto;
+    width: 50%;
+    border: 0 solid #ccc;
+    border-bottom-width: 1px;
+  }
 }
 
 .invert {
