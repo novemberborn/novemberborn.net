@@ -1,5 +1,6 @@
 import hbs from 'handlebars-inline-precompile'
 
-export default hbs`
-{{{content}}}
+export default hbs`<article>
+  {{{content}}}
+</article>
 `

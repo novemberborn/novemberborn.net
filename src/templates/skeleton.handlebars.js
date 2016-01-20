@@ -10,19 +10,19 @@ export default hbs`<!doctype html>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   </head>
 
-  <body>
-    <div class="root">
-      <nav data-current="{{pathname}}">
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/skills-and-background">Skills &amp; Background</a></li>
-          <li><a href="/projects">Projects</a></li>
-        </ul>
+  <body data-pathname="{{pathname}}">
+    <header>
+      <h1><a href="/">novemberborn.net</a></h1>
+      <nav>
+        <a href="/about">About</a>,
+        <a href="/skills-and-background">Skills &amp; Background</a>,
+        <a href="/projects">Projects</a>
       </nav>
+    </header>
 
+    <main>
       {{> (lookup . 'contentPartial')}}
-    </div>
+    </main>
   </body>
 </html>
 `
