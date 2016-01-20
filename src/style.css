@@ -28,3 +28,51 @@ h2 {
 img {
   width: 100%;
 }
+
+nav {
+  border-bottom: 1px solid #ccc;
+  margin: 1rem 0;
+  padding: 0 0 0.5rem;
+
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  ul::before {
+    content: "novemberborn.net";
+    font-weight: bold;
+    display: block;
+  }
+
+  li {
+    list-style: none;
+    margin: 0;
+    display: inline;
+  }
+
+  li::after {
+    content: ", ";
+  }
+
+  li:last-child::after {
+    content: "";
+  }
+
+  a {
+    color: #333;
+    text-decoration: none;
+  }
+
+  a:hover,
+  a:focus {
+    text-decoration: underline;
+  }
+
+  &[data-current="/"] a[href="/"],
+  &[data-current="/about"] a[href="/about"],
+  &[data-current="/skills-and-background"] a[href="/skills-and-background"],
+  &[data-current^="/projects"] a[href="/projects"] {
+    background: #fff85f;
+  }
+}

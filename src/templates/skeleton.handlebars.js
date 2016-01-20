@@ -12,6 +12,15 @@ export default hbs`<!doctype html>
 
   <body>
     <div class="root">
+      <nav data-current="{{pathname}}">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/skills-and-background">Skills &amp; Background</a></li>
+          <li><a href="/projects">Projects</a></li>
+        </ul>
+      </nav>
+
       {{> (lookup . 'contentPartial')}}
     </div>
   </body>

@@ -1,8 +1,11 @@
 import { routes as staticRoutes, getPath } from './static-files'
-import { render as renderContent } from './content'
+import {
+  render as renderContent,
+  projects
+} from './content'
 
 import {
-  home,
+  content as contentPartial,
   notFound,
   skeleton
 } from 'glob:../templates/*.js'
@@ -10,10 +13,30 @@ import {
 const table = {
   async '/' () {
     return {
-      contentPartial: home,
       content: await renderContent('home')
     }
+  },
+  async '/about' () {
+    return {
+      content: await renderContent('about')
+    }
+  },
+  async '/projects' () {
+    return {
+      content: await renderContent('projects')
+    }
+  },
+  async '/skills-and-background' () {
+    return {
+      content: await renderContent('skills-and-background')
+    }
   }
+}
+
+for (const [subpath, contentName] of projects) {
+  table[`/projects/${subpath}`] = async () => ({
+    content: await renderContent(contentName)
+  })
 }
 
 export async function route (pathname) {
@@ -44,7 +67,9 @@ export async function route (pathname) {
   }
 
   const expandedContext = Object.assign({
-    cssUrl: getPath('style.css')
+    cssUrl: getPath('style.css'),
+    contentPartial,
+    pathname
   }, context)
   const body = new Buffer(skeleton(expandedContext), 'utf8')
   headers['content-length'] = body.length

@@ -35,6 +35,7 @@
     "cssnano": "^3.4.0",
     "nodemon": "^1.8.1",
     "postcss-cli": "^2.4.0",
+    "postcss-nested": "^1.0.0",
     "postcss-normalize": "^0.1.2",
     "rimraf": "^2.5.0",
     "standard": "^5.4.1",

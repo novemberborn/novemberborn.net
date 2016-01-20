@@ -1,5 +1,5 @@
 import { readFile, writeFile } from 'fs'
-import { join } from 'path'
+import { basename, join, sep as fileSeparator } from 'path'
 
 import findCacheDir from 'find-cache-dir'
 import mkdirp from 'mkdirp'
@@ -46,3 +46,15 @@ export async function render (name) {
   const { src, tag } = files[`${name}.md`]
   return getFromCacheOrRender(src, tag)
 }
+
+export const projects = Object.keys(files).reduce((acc, relpath) => {
+  const parts = relpath.split(fileSeparator)
+  const filePart = basename(parts.pop(), '.md')
+  const name = join(...parts, filePart)
+
+  const subDirectory = parts.shift()
+  if (subDirectory !== 'projects') return acc
+
+  const subpath = [].concat(parts, filePart).join('/')
+  return acc.set(subpath, name)
+}, new Map())
