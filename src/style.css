@@ -57,6 +57,19 @@ main {
   ul {
     padding-left: 1rem;
   }
+
+  a {
+    color: #2731ec;
+
+    &:hover,
+    &:focus {
+      background: #fefee2;
+    }
+
+    &:visited {
+      color: #ec2965;
+    }
+  }
 }
 
 .invert {
