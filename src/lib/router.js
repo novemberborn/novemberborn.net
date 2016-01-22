@@ -1,4 +1,4 @@
-import { routes as staticRoutes, getPath } from './static-files'
+import { routes as staticRoutes } from './static-files'
 import {
   render as renderContent,
   projects
@@ -67,7 +67,6 @@ export async function route (pathname) {
   }
 
   const expandedContext = Object.assign({
-    cssUrl: getPath('style.css'),
     contentPartial,
     pathname
   }, context)
