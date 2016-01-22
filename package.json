@@ -6,9 +6,10 @@
   "scripts": {
     "clean": "rimraf server.js server.js.map lib templates static/style.css static/style.css.map",
     "prebuild": "npm run clean",
-    "build": "npm run build:css && babel src --out-dir ./ --source-maps",
+    "build": "npm run build:css && npm run build:server --",
     "build:css": "postcss -o static/style.css -m file -c postcss.json src/style.css",
-    "build:watch": "nodemon -w content -w src -e 'md css' -x 'npm run build:css && babel src --out-dir ./ --source-maps --watch'",
+    "build:server": "babel src --ignore src/browser.js --out-dir ./ --source-maps",
+    "build:watch": "nodemon -w content -w src -e 'md css' -x 'npm run build -- --watch'",
     "nodemon": "nodemon",
     "test": "standard && stylelint src/**/*.css"
   },
