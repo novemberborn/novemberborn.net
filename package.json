@@ -4,7 +4,7 @@
   "version": "2.0.0",
   "description": "Behind the scenes of https://novemberborn.net/",
   "scripts": {
-    "clean": "rimraf server.js server.js.map lib templates static/style.css static/style.css.map static/browser.js static/browser.js.map",
+    "clean": "rimraf server.js server.js.map lib templates static/style.css static/style.css.map static/browser.js static/browser.js.map node_modules/.cache",
     "prebuild": "npm run clean",
     "build": "npm run build:browser && npm run build:server --",
     "build:browser": "npm run build:css && npm run build:js",
