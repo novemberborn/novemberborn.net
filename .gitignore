@@ -8,5 +8,7 @@ node_modules
 /lib
 /templates
 
+/static/browser.js
+/static/browser.js.map
 /static/style.css
 /static/style.css.map

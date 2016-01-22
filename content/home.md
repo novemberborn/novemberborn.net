@@ -3,7 +3,8 @@ cap](/static/ca89b301804de016ab8cd9d5031325ab/rowing.jpg)
 
 Hi! My name's Mark Wubben. I'm a humanist & technologist who loves working with
 the web. In the above picture I'm wearing a fabulous [Irish tweed
-cap](http://www.aransweatermarket.com/irish-tweed-flat-caps).
+cap](http://www.aransweatermarket.com/irish-tweed-flat-caps). You could <a
+data-email="bcd1ddced7fcd2d3cad9d1ded9ceded3ced292d2d9c8">send me an email</a>.
 
 Living in London (the English one) I enjoy the
 [local](http://www.beavertownbrewery.co.uk/)

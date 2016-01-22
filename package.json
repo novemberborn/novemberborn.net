@@ -4,10 +4,12 @@
   "version": "2.0.0",
   "description": "Behind the scenes of https://novemberborn.net/",
   "scripts": {
-    "clean": "rimraf server.js server.js.map lib templates static/style.css static/style.css.map",
+    "clean": "rimraf server.js server.js.map lib templates static/style.css static/style.css.map static/browser.js static/browser.js.map",
     "prebuild": "npm run clean",
-    "build": "npm run build:css && npm run build:server --",
+    "build": "npm run build:browser && npm run build:server --",
+    "build:browser": "npm run build:css && npm run build:js",
     "build:css": "postcss -o static/style.css -m file -c postcss.json src/style.css",
+    "build:js": "uglifyjs -c -m -o static/browser.js --source-map static/browser.js.map --source-map-url ./browser.js.map --source-map-include-sources src/browser.js",
     "build:server": "babel src --ignore src/browser.js --out-dir ./ --source-maps",
     "build:watch": "nodemon -w content -w src -e 'md css' -x 'npm run build -- --watch'",
     "nodemon": "nodemon",
@@ -42,7 +44,8 @@
     "rimraf": "^2.5.0",
     "standard": "^5.4.1",
     "stylelint": "^3.2.3",
-    "stylelint-config-standard": "^0.2.0"
+    "stylelint-config-standard": "^0.2.0",
+    "uglify-js": "^2.6.1"
   },
   "dependencies": {
     "dotenv": "^1.2.0",
