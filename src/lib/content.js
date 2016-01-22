@@ -5,10 +5,29 @@ import findCacheDir from 'find-cache-dir'
 import mkdirp from 'mkdirp'
 import Remarkable from 'remarkable'
 
+import { getPath } from './static-files'
+
 import files from 'files:../../content/**/*.md'
 
 const cacheDir = findCacheDir({ name: 'net.novemberborn' })
-const md = new Remarkable({ html: true, typographer: true })
+const md = new Remarkable({
+  html: true,
+  typographer: true
+}).use(md => {
+  // Replace the image renderer so static file names can be used.
+  const { rules } = md.renderer
+  const { image } = rules
+  rules.image = (tokens, idx, ...remainder) => {
+    const { src } = tokens[idx]
+    if (!src.includes('/')) {
+      // If the source includes a / it should be left as-is, it won't match a
+      // static file.
+      tokens[idx].src = getPath(src)
+    }
+
+    return image(tokens, idx, ...remainder)
+  }
+})
 
 const inProgress = new Map()
 function getFromCacheOrRender (src, tag) {

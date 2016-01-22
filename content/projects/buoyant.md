@@ -1,4 +1,4 @@
-![A series of rubber duckies, one with a stormtrooper helmet](/static/f53ff18903bda93b1cc6755f85772d1e/buoyant.jpg)
+![A series of rubber duckies, one with a stormtrooper helmet](buoyant.jpg)
 
 # Buoyant
 

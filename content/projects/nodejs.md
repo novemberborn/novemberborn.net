@@ -1,4 +1,4 @@
-![Node.js logo](/static/0a2dbcaac5da8f87f018baf9cf857ad9/nodejs.svg)
+![Node.js logo](nodejs.svg)
 
 # Smallish Node.js Modules
 

@@ -1,4 +1,4 @@
-![Babel logo](/static/3a1d8d55053e229ae0b1ceec7d966abb/babel.svg)
+![Babel logo](babel.svg)
 
 # Babel Plugins
 

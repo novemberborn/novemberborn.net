@@ -1,5 +1,5 @@
 ![The author rowing a boat, donning a fabulous tweed
-cap](/static/ca89b301804de016ab8cd9d5031325ab/rowing.jpg)
+cap](rowing.jpg)
 
 Hi! My name's Mark Wubben. I'm a humanist & technologist who loves working with
 the web. In the above picture I'm wearing a fabulous [Irish tweed
