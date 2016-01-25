@@ -8,7 +8,7 @@ body {
   & > header,
   & > main {
     margin: 0 auto;
-    max-width: 28rem;
+    max-width: 34rem;
 
     /* Assume standard font-size of 16px, meaning the body has 32px horizontal
     padding. Target minimum width of 320px (iPhone 4). */
@@ -44,11 +44,25 @@ header {
 }
 
 main {
+  font-size: 1.1rem;
+
   h1,
   h2,
   h3 {
     font-weight: normal;
     margin: 1rem 0;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.33rem;
   }
 
   img {
