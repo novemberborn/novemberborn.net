@@ -12,7 +12,7 @@
     "build:js": "uglifyjs -c -m -o static/browser.js --source-map static/browser.js.map --source-map-url ./browser.js.map --source-map-include-sources src/browser.js",
     "build:server": "babel src --ignore src/browser.js --out-dir ./ --source-maps",
     "build:watch": "nodemon -w content -w src -e 'md css' -x 'npm run build -- --watch'",
-    "nodemon": "nodemon",
+    "nodemon": "nodemon | bunyan",
     "test": "standard && stylelint src/**/*.css"
   },
   "repository": {
@@ -48,6 +48,8 @@
     "uglify-js": "^2.6.1"
   },
   "dependencies": {
+    "bunyan": "^1.5.1",
+    "convert-hrtime": "^1.0.0",
     "dotenv": "^2.0.0",
     "find-cache-dir": "^0.1.1",
     "handlebars": "^4.0.5",

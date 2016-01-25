@@ -1,9 +1,11 @@
 import { createServer } from 'https'
 import { parse as parseUrl } from 'url'
 
+import convertHrTime from 'convert-hrtime'
 import sourceMapSupport from 'source-map-support'
 
 import { PFX_BASE64 } from './lib/env'
+import logger from './lib/logger'
 import { route } from './lib/router'
 
 import { skeleton, serverError } from 'glob:templates/*.js'
@@ -16,6 +18,9 @@ const errorBody = new Buffer(skeleton({
 sourceMapSupport.install({ handleUncaughtExceptions: false })
 
 createServer({ pfx: new Buffer(PFX_BASE64, 'base64') }, async (req, res) => {
+  const start = process.hrtime()
+  logger.info({ req }, 'request-start')
+
   try {
     const [statusCode, headers, body] = await handleRequest(req)
     res.writeHead(statusCode, headers)
@@ -24,13 +29,15 @@ createServer({ pfx: new Buffer(PFX_BASE64, 'base64') }, async (req, res) => {
     }
     res.end()
   } catch (err) {
-    // TODO: Hook up Bunyan
-    console.error(err && err.stack || err)
-
     if (!res.headersSent) {
       res.writeHead(500)
       res.end()
     }
+
+    logger.error({ err, req }, 'server-request-listener-failure')
+  } finally {
+    const duration = convertHrTime(process.hrtime(start))
+    logger.info({ req, res, duration }, 'request-finish')
   }
 }).listen(8443)
 
@@ -43,8 +50,7 @@ async function handleRequest (req) {
     const { pathname } = parseUrl(req.url)
     return await route(pathname)
   } catch (err) {
-    // TODO: Hook up Bunyan
-    console.error(err && err.stack || err)
+    logger.error({ err, req }, 'server-handle-request-failure')
 
     return [500, {
       'content-type': 'text/html; charset=utf-8',
