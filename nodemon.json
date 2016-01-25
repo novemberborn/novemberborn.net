@@ -1,4 +1,7 @@
 {
   "exec": "PFX_BASE64=$(base64 -i https.p12) node server.js",
+  "env": {
+    "NODE_ENV": "development"
+  },
   "watch": ["server.js", "lib/", "templates/"]
 }

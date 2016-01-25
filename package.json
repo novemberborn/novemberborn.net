@@ -35,6 +35,7 @@
     "babel-plugin-transform-es2015-destructuring": "^6.4.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.4.5",
     "babel-plugin-transform-es2015-parameters": "^6.4.5",
+    "babel-plugin-transform-object-rest-spread": "^6.3.13",
     "babel-plugin-transform-strict-mode": "^6.3.13",
     "cssnano": "^3.4.0",
     "nodemon": "^1.8.1",
@@ -54,6 +55,7 @@
     "find-cache-dir": "^0.1.1",
     "handlebars": "^4.0.5",
     "mkdirp": "^0.5.1",
+    "raven": "^0.10.0",
     "remarkable": "^1.6.1",
     "source-map-support": "^0.4.0"
   },
