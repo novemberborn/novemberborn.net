@@ -13,6 +13,7 @@ export default hbs`<!doctype html>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="apple-touch-icon-precomposed" href="{{static_path name='favicon-152.png'}}">
     <script src="{{static_path name='browser.js'}}" defer></script>
+    {{#if pathname}}<link rel="canonical" href="https://novemberborn.net{{pathname}}">{{/if}}
   </head>
 
   <body data-pathname="{{pathname}}">
