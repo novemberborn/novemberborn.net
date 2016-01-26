@@ -63,3 +63,8 @@ async function handleRequest (req) {
 
 process.on('SIGINT', () => process.exit(0))
 process.on('SIGTERM', () => process.exit(0))
+
+process.on('uncaughtException', err => {
+  logger.fatal(err, 'uncaught-exception')
+  process.exit(1)
+})
