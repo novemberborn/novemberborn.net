@@ -3,12 +3,17 @@ import {
   render as renderContent,
   projects
 } from './content'
+import { NODE_ENV } from './env'
 
 import {
   content as contentPartial,
   notFound,
   skeleton
 } from 'glob:../templates/*.js'
+
+const FourHours = 4 * 60 * 60
+const NinetyDays = 90 * 24 * 60 * 60
+const TenDays = 10 * 24 * 60 * 60
 
 const table = {
   async '/' () {
@@ -41,10 +46,14 @@ for (const [subpath, contentName] of projects) {
 
 export async function route (pathname) {
   if (staticRoutes.has(pathname)) {
+    // Static routes contain a file hash, so they're safe to cache for a pretty
+    // long while. That doesn't apply to the favicon though.
+    let maxAge = pathname === '/favicon.ico' ? TenDays : NinetyDays
     const [chunk, { contentType, contentLength }] = await staticRoutes.get(pathname)
     return [200, {
       'content-type': contentType,
-      'content-length': contentLength
+      'content-length': contentLength,
+      'cache-control': NODE_ENV === 'production' ? `public, max-age=${maxAge}` : 'no-store'
     }, chunk]
   }
 
@@ -55,7 +64,11 @@ export async function route (pathname) {
 
   let statusCode = 200
   let headers = {
-    'content-type': 'text/html; charset=utf-8'
+    'content-type': 'text/html; charset=utf-8',
+    // Cache for 4 ours in end-users browsers, and 10 days in CloudFlare. The
+    // latter should help with the Always Online feature:
+    // <https://support.cloudflare.com/hc/en-us/articles/202238800>.
+    'cache-control': NODE_ENV === 'production' ? `public, max-age=${FourHours}, s-maxage=${TenDays}` : 'no-store'
   }
 
   let context
