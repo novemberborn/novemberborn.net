@@ -39,7 +39,9 @@ createServer({ pfx: new Buffer(PFX_BASE64, 'base64') }, async (req, res) => {
     const duration = convertHrTime(process.hrtime(start))
     logger.info({ req, res, duration }, 'request-finish')
   }
-}).listen(8443)
+}).listen(8443, () => {
+  logger.info('listening')
+})
 
 async function handleRequest (req) {
   if (req.method !== 'GET' && req.method !== 'HEAD') {
