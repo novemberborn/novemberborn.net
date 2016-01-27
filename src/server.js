@@ -63,7 +63,8 @@ async function handleRequest (req) {
 
   try {
     const { pathname } = parseUrl(req.url)
-    return await route(pathname)
+    const { headers: { host } } = req
+    return await route(pathname, host)
   } catch (err) {
     logger.error({ err, req }, 'server-handle-request-failure')
 

@@ -44,7 +44,17 @@ for (const [subpath, contentName] of projects) {
   })
 }
 
-export async function route (pathname) {
+export async function route (pathname, host) {
+  // Redirect away from pathnames ending in a slash.
+  if (pathname !== '/' && pathname.endsWith('/')) {
+    return [301, { location: pathname.slice(0, -1) }]
+  }
+
+  // Don't use the www. subdomain
+  if (/^www\./.test(host)) {
+    return [301, { location: `https://${host.slice(4)}${pathname}` }]
+  }
+
   if (staticRoutes.has(pathname)) {
     // Static routes contain a file hash, so they're safe to cache for a pretty
     // long while. That doesn't apply to the favicon though.
@@ -55,11 +65,6 @@ export async function route (pathname) {
       'content-length': contentLength,
       'cache-control': NODE_ENV === 'production' ? `public, max-age=${maxAge}` : 'no-store'
     }, chunk]
-  }
-
-  // Redirect away from pathnames ending in a slash.
-  if (pathname !== '/' && pathname.endsWith('/')) {
-    return [301, { location: pathname.slice(0, -1) }]
   }
 
   let statusCode = 200
