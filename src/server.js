@@ -4,7 +4,8 @@ import { parse as parseUrl } from 'url'
 import convertHrTime from 'convert-hrtime'
 import sourceMapSupport from 'source-map-support'
 
-import { PFX_BASE64 } from './lib/env'
+import { PFX_BASE64, NODE_ENV } from './lib/env'
+import { verifyPullOrigin } from './lib/cloudflare'
 import logger from './lib/logger'
 import { route } from './lib/router'
 
@@ -17,11 +18,21 @@ const errorBody = new Buffer(skeleton({
 
 sourceMapSupport.install({ handleUncaughtExceptions: false })
 
-createServer({ pfx: new Buffer(PFX_BASE64, 'base64') }, async (req, res) => {
+createServer({
+  pfx: new Buffer(PFX_BASE64, 'base64'),
+  requestCert: NODE_ENV === 'production',
+  rejectUnauthorized: false
+}, async (req, res) => {
   const start = process.hrtime()
   logger.info({ req }, 'request-start')
 
   try {
+    if (NODE_ENV === 'production' && !verifyPullOrigin(req.client.getPeerCertificate(true))) {
+      req.client.destroy()
+      logger.info({ req }, 'reject-client-certificate')
+      return
+    }
+
     const [statusCode, headers, body] = await handleRequest(req)
     res.writeHead(statusCode, headers)
     if (req.method !== 'HEAD') {

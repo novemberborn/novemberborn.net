@@ -57,6 +57,7 @@
     "find-cache-dir": "^0.1.1",
     "handlebars": "^4.0.5",
     "mkdirp": "^0.5.1",
+    "node-forge": "^0.6.38",
     "raven": "^0.10.0",
     "remarkable": "^1.6.1",
     "source-map-support": "^0.4.0"

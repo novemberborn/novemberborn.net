@@ -2397,6 +2397,11 @@
       "from": "nested-error-stacks@>=1.0.0 <2.0.0",
       "resolved": "https://registry.npmjs.org/nested-error-stacks/-/nested-error-stacks-1.0.2.tgz"
     },
+    "node-forge": {
+      "version": "0.6.38",
+      "from": "node-forge@latest",
+      "resolved": "https://registry.npmjs.org/node-forge/-/node-forge-0.6.38.tgz"
+    },
     "node-pre-gyp": {
       "version": "0.6.17",
       "from": "node-pre-gyp@>=0.6.17 <0.7.0",
