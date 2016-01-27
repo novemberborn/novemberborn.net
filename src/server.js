@@ -37,7 +37,7 @@ createServer({
 
     const [statusCode, headers, body] = await handleRequest(req)
     res.writeHead(statusCode, headers)
-    if (req.method !== 'HEAD') {
+    if (req.method !== 'HEAD' && body) {
       res.write(body)
     }
     res.end()
