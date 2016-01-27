@@ -8,6 +8,7 @@ import { PFX_BASE64, NODE_ENV } from './lib/env'
 import { verifyPullOrigin } from './lib/cloudflare'
 import logger from './lib/logger'
 import { route } from './lib/router'
+import sentry from './lib/sentry'
 
 import { skeleton, serverError } from 'glob:templates/*.js'
 
@@ -77,5 +78,18 @@ process.on('SIGTERM', () => process.exit(0))
 
 process.on('uncaughtException', err => {
   logger.fatal(err, 'uncaught-exception')
-  process.exit(1)
+
+  const exit = () => process.exit(1)
+  if (!sentry) {
+    exit()
+  } else {
+    sentry.captureError(err)
+    // Assume these events aren't triggered by another report that was
+    // in flight.
+    sentry.once('logged', exit)
+    sentry.once('error', exit)
+
+    // Force exit after 5 seconds.
+    setTimeout(exit, 5000).unref()
+  }
 })

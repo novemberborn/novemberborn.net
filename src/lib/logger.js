@@ -2,17 +2,10 @@ import { Writable } from 'stream'
 import { isError } from 'util'
 
 import { createLogger, stdSerializers } from 'bunyan'
-import {
-  Client as SentryClient,
-  parsers as sentryParsers,
-  utils as sentryUtils
-} from 'raven'
+import { parsers as sentryParsers } from 'raven'
 
-import {
-  BUNYAN_LEVEL as level,
-  NODE_ENV as environment,
-  SENTRY_DSN
-} from './env'
+import { BUNYAN_LEVEL as level } from './env'
+import sentry from './sentry'
 
 const errorTag = Symbol('logger error tag')
 const streams = []
@@ -23,10 +16,7 @@ streams.push({
   stream: process.stdout
 })
 
-if (environment === 'production' && SENTRY_DSN) {
-  // Monkey-patch to remove modules lookup.
-  sentryUtils.getModules = () => ({})
-
+if (sentry) {
   const sentryLevels = new Map([
     [20, 'debug'],
     [30, 'info'],
@@ -35,15 +25,19 @@ if (environment === 'production' && SENTRY_DSN) {
     [60, 'fatal']
   ])
 
-  const sentry = new SentryClient(SENTRY_DSN, {
-    tags: { environment }
-  })
   streams.push({
     level: 'warn',
     type: 'raw',
     stream: new Writable({
       objectMode: true,
       write (record, _, done) {
+        const { err, level: bunyanLevel, msg } = record
+        const level = sentryLevels.get(bunyanLevel)
+
+        // Fatal is only used for uncaught exceptions, which are reported to
+        // Sentry separately.
+        if (level === 'fatal') return
+
         // Remove fields that Sentry will report by itself, or are otherwise
         // superfluous. Copy the record since it shouldn't be modified.
         const extra = Object.assign({}, record)
@@ -52,15 +46,9 @@ if (environment === 'production' && SENTRY_DSN) {
         delete extra.name
         delete extra.v
 
-        const { err, level: bunyanLevel, msg } = record
-        const kwargs = {
-          extra,
-          level: sentryLevels.get(bunyanLevel)
-        }
-
         // Capture the message unless the record is for a proper Error.
         if (!err || !err[errorTag]) {
-          sentry.captureMessage(msg, kwargs)
+          sentry.captureMessage(msg, { extra, level })
           done()
           return
         }
@@ -73,8 +61,8 @@ if (environment === 'production' && SENTRY_DSN) {
         // `instanceof Error`. Bunyan returns a regular object, which the
         // configured serializer has tagged as originally being a proper
         // error.
-        sentryParsers.parseError(err, kwargs, processKwargs => {
-          sentry.process(processKwargs)
+        sentryParsers.parseError(err, { extra, level }, kwargs => {
+          sentry.process(kwargs)
           done()
         })
       }
