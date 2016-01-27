@@ -15,6 +15,8 @@ const FourHours = 4 * 60 * 60
 const NinetyDays = 90 * 24 * 60 * 60
 const TenDays = 10 * 24 * 60 * 60
 
+const contentCacheControl = NODE_ENV === 'production' ? `public, max-age=${FourHours}, s-maxage=${TenDays}` : 'no-store'
+
 const table = {
   async '/' () {
     return {
@@ -47,12 +49,12 @@ for (const [subpath, contentName] of projects) {
 export async function route (pathname, host) {
   // Redirect away from pathnames ending in a slash.
   if (pathname !== '/' && pathname.endsWith('/')) {
-    return [301, { location: pathname.slice(0, -1) }]
+    return [301, { location: pathname.slice(0, -1), 'cache-control': contentCacheControl }]
   }
 
   // Don't use the www. subdomain
   if (/^www\./.test(host)) {
-    return [301, { location: `https://${host.slice(4)}${pathname}` }]
+    return [301, { location: `https://${host.slice(4)}${pathname}`, 'cache-control': contentCacheControl }]
   }
 
   if (staticRoutes.has(pathname)) {
@@ -73,7 +75,7 @@ export async function route (pathname, host) {
     // Cache for 4 ours in end-users browsers, and 10 days in CloudFlare. The
     // latter should help with the Always Online feature:
     // <https://support.cloudflare.com/hc/en-us/articles/202238800>.
-    'cache-control': NODE_ENV === 'production' ? `public, max-age=${FourHours}, s-maxage=${TenDays}` : 'no-store'
+    'cache-control': contentCacheControl
   }
 
   let context
