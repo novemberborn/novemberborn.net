@@ -4,6 +4,7 @@ import {
   projects
 } from './content'
 import { NODE_ENV } from './env'
+import securityHeaders from './security-headers'
 
 import {
   content as contentPartial,
@@ -49,12 +50,18 @@ for (const [subpath, contentName] of projects) {
 export async function route (pathname, host) {
   // Redirect away from pathnames ending in a slash.
   if (pathname !== '/' && pathname.endsWith('/')) {
-    return [301, { location: pathname.slice(0, -1), 'cache-control': contentCacheControl }]
+    return [301, Object.assign({
+      location: pathname.slice(0, -1),
+      'cache-control': contentCacheControl
+    }, securityHeaders)]
   }
 
   // Don't use the www. subdomain
   if (/^www\./.test(host)) {
-    return [301, { location: `https://${host.slice(4)}${pathname}`, 'cache-control': contentCacheControl }]
+    return [301, Object.assign({
+      location: `https://${host.slice(4)}${pathname}`,
+      'cache-control': contentCacheControl
+    }, securityHeaders)]
   }
 
   if (staticRoutes.has(pathname)) {
@@ -62,11 +69,11 @@ export async function route (pathname, host) {
     // long while. That doesn't apply to the favicon though.
     let maxAge = pathname === '/favicon.ico' ? TenDays : NinetyDays
     const [chunk, { contentType, contentLength }] = await staticRoutes.get(pathname)
-    return [200, {
+    return [200, Object.assign({
       'content-type': contentType,
       'content-length': contentLength,
       'cache-control': NODE_ENV === 'production' ? `public, max-age=${maxAge}` : 'no-store'
-    }, chunk]
+    }, securityHeaders), chunk]
   }
 
   let statusCode = 200
@@ -93,5 +100,5 @@ export async function route (pathname, host) {
   const body = new Buffer(skeleton(expandedContext), 'utf8')
   headers['content-length'] = body.length
 
-  return [statusCode, headers, body]
+  return [statusCode, Object.assign(headers, securityHeaders), body]
 }

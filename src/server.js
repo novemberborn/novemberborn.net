@@ -9,6 +9,7 @@ import { verifyPullOrigin } from './lib/cloudflare'
 import logger from './lib/logger'
 import pfx from './lib/pfx'
 import { route } from './lib/router'
+import securityHeaders from './lib/security-headers'
 import sentry from './lib/sentry'
 
 import { skeleton, serverError } from 'glob:templates/*.js'
@@ -43,7 +44,7 @@ createServer({
     res.end()
   } catch (err) {
     if (!res.headersSent) {
-      res.writeHead(500)
+      res.writeHead(500, securityHeaders)
       res.end()
     }
 
@@ -58,7 +59,7 @@ createServer({
 
 async function handleRequest (req) {
   if (req.method !== 'GET' && req.method !== 'HEAD') {
-    return [405]
+    return [405, Object.assign({}, securityHeaders)]
   }
 
   try {
@@ -68,10 +69,10 @@ async function handleRequest (req) {
   } catch (err) {
     logger.error({ err, req }, 'server-handle-request-failure')
 
-    return [500, {
+    return [500, Object.assign({
       'content-type': 'text/html; charset=utf-8',
       'content-length': errorBody.length
-    }, errorBody]
+    }, securityHeaders), errorBody]
   }
 }
 
