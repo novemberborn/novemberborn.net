@@ -65,9 +65,9 @@ architecture. The site was always able to render server-side, first through
 Rails and later Node.js. An internal framework was developed to render reactive
 pages in 2011. (This was replaced by a React architecture in 2015.)
 
-Early one the front-end was separated by the back-end through an API layer,
-which grew to power Android & iOS clients. I was in charge of the API server and
-its OAuth implementation, contributing to [RFC
+Early on the front-end was separated by the back-end through an API layer, which
+grew to power Android & iOS clients. I was in charge of the API server and its
+OAuth implementation, contributing to [RFC
 7009](https://tools.ietf.org/html/rfc7009).
 
 As you can imagine I was involved with many more projects and challenges than I
