@@ -47,6 +47,8 @@ for (const [subpath, contentName] of projects) {
   })
 }
 
+export { table }
+
 export async function route (pathname, host) {
   // Redirect away from pathnames ending in a slash.
   if (pathname !== '/' && pathname.endsWith('/')) {

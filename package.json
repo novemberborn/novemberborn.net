@@ -4,7 +4,7 @@
   "version": "2.0.0",
   "description": "Behind the scenes of https://novemberborn.net/",
   "scripts": {
-    "clean": "rimraf server.js server.js.map lib templates static/style.css static/style.css.map static/browser.js static/browser.js.map node_modules/.cache",
+    "clean": "rimraf server.js server.js.map lib scripts templates static/style.css static/style.css.map static/browser.js static/browser.js.map node_modules/.cache",
     "prebuild": "npm run clean",
     "build": "npm run build:browser && npm run build:server --",
     "build:browser": "npm run build:css && npm run build:js",
@@ -14,6 +14,7 @@
     "build:server": "babel src --ignore src/browser.js --out-dir ./ --source-maps",
     "build:watch": "nodemon -w content -w src -e 'md css' -x 'npm run build -- --watch'",
     "docker": "docker run --rm --name=site -p 443:8443 -e PFX_BASE64=$(base64 -i https.p12) --env-file=.env novemberborn-dot-net | bunyan",
+    "list-content-routes": "node scripts/list-content-routes",
     "nodemon": "nodemon | bunyan",
     "test": "standard && stylelint src/**/*.css"
   },
