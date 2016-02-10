@@ -3,8 +3,7 @@ import hbs from 'handlebars-inline-precompile'
 
 import { getPath } from '../lib/static-files'
 
-export default hbs`<!doctype html>
-
+export default hbs`<!DOCTYPE html>
 <html lang="en-US">
   <head>
     <meta charset="utf-8">
