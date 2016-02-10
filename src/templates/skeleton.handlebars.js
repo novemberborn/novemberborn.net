@@ -5,7 +5,7 @@ import { getPath } from '../lib/static-files'
 
 export default hbs`<!doctype html>
 
-<html>
+<html lang="en-US">
   <head>
     <meta charset="utf-8">
     <title>{{#if title}}{{title}} — {{/if}}novemberborn.net</title>
