@@ -42,9 +42,11 @@ const table = {
 }
 
 for (const [subpath, contentName] of projects) {
-  table[`/projects/${subpath}`] = async () => ({
-    content: await renderContent(contentName)
-  })
+  table[`/projects/${subpath}`] = async function () {
+    return {
+      content: await renderContent(contentName)
+    }
+  }
 }
 
 export { table }

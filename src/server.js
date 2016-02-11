@@ -25,7 +25,7 @@ createServer({
   pfx,
   requestCert: NODE_ENV === 'production',
   rejectUnauthorized: false
-}, async (req, res) => {
+}, async function (req, res) {
   const start = process.hrtime()
   logger.info({ req }, 'request-start')
 
@@ -79,7 +79,7 @@ async function handleRequest (req) {
 process.on('SIGINT', () => process.exit(0))
 process.on('SIGTERM', () => process.exit(0))
 
-process.on('uncaughtException', err => {
+process.on('uncaughtException', (err) => {
   logger.fatal(err, 'uncaught-exception')
 
   const exit = () => process.exit(1)
