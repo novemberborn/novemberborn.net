@@ -70,7 +70,7 @@ export async function route (pathname, host) {
     // Static routes contain a file hash, so they're safe to cache for a pretty
     // long while. That doesn't apply to the favicon though.
     let maxAge = pathname === '/favicon.ico' ? TenDays : NinetyDays
-    const [chunk, { contentType, contentLength }] = await staticRoutes.get(pathname)
+    const [chunk, { contentType, size: contentLength }] = await staticRoutes.get(pathname)
     return [200, Object.assign({
       'content-type': contentType,
       'content-length': contentLength,
