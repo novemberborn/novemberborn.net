@@ -13,7 +13,7 @@
     "build:js": "uglifyjs -c -m -o static/browser.js --source-map static/browser.js.map --source-map-url ./browser.js.map --source-map-include-sources src/browser.js",
     "build:server": "babel src --ignore src/browser.js --out-dir ./ --source-maps",
     "build:watch": "nodemon -w content -w src -e 'md css' -x 'npm run build -- --watch'",
-    "docker": "docker run --rm --name=site -p 443:8443 -e PFX_BASE64=$(base64 -i https.p12) --env-file=.env novemberborn-dot-net | bunyan",
+    "docker": "docker run --rm --name=site -p 443:8443 -e CERT_NAME=development --env-file=.env novemberborn-dot-net | bunyan",
     "list-content-routes": "node scripts/list-content-routes",
     "nodemon": "nodemon | bunyan",
     "test": "standard && stylelint src/**/*.css"

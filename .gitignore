@@ -1,7 +1,8 @@
 .env
 .node-version
-https.p12
 node_modules
+
+/certs
 
 /server.js
 /server.js.map

@@ -13,6 +13,7 @@ RUN npm prune --silent --prod
 
 WORKDIR /app
 COPY .babelrc postcss.json .stylelintrc ./
+COPY certs ./certs
 COPY src ./src
 COPY content ./content
 COPY static ./static
