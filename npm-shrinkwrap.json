@@ -134,6 +134,11 @@
       "from": "asn1@>=0.2.3 <0.3.0",
       "resolved": "https://registry.npmjs.org/asn1/-/asn1-0.2.3.tgz"
     },
+    "asn1.js": {
+      "version": "4.4.0",
+      "from": "asn1.js@latest",
+      "resolved": "https://registry.npmjs.org/asn1.js/-/asn1.js-4.4.0.tgz"
+    },
     "assert-plus": {
       "version": "0.1.5",
       "from": "assert-plus@>=0.1.5 <0.2.0",
@@ -506,6 +511,11 @@
       "version": "3.2.2",
       "from": "bluebird@>=3.1.1 <4.0.0",
       "resolved": "https://registry.npmjs.org/bluebird/-/bluebird-3.2.2.tgz"
+    },
+    "bn.js": {
+      "version": "4.10.3",
+      "from": "bn.js@>=4.0.0 <5.0.0",
+      "resolved": "https://registry.npmjs.org/bn.js/-/bn.js-4.10.3.tgz"
     },
     "boom": {
       "version": "2.10.1",
@@ -1919,6 +1929,11 @@
       "from": "mime-types@>=2.1.7 <2.2.0",
       "resolved": "https://registry.npmjs.org/mime-types/-/mime-types-2.1.9.tgz"
     },
+    "minimalistic-assert": {
+      "version": "1.0.0",
+      "from": "minimalistic-assert@>=1.0.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/minimalistic-assert/-/minimalistic-assert-1.0.0.tgz"
+    },
     "minimatch": {
       "version": "2.0.10",
       "from": "minimatch@>=2.0.3 <3.0.0",
@@ -2002,11 +2017,6 @@
       "version": "1.0.2",
       "from": "nested-error-stacks@>=1.0.0 <2.0.0",
       "resolved": "https://registry.npmjs.org/nested-error-stacks/-/nested-error-stacks-1.0.2.tgz"
-    },
-    "node-forge": {
-      "version": "0.6.38",
-      "from": "node-forge@latest",
-      "resolved": "https://registry.npmjs.org/node-forge/-/node-forge-0.6.38.tgz"
     },
     "node-pre-gyp": {
       "version": "0.6.17",
@@ -2659,13 +2669,7 @@
         "glob": {
           "version": "6.0.4",
           "from": "glob@>=6.0.1 <7.0.0",
-          "resolved": "https://registry.npmjs.org/glob/-/glob-6.0.4.tgz",
-          "dependencies": {
-            "inflight": {
-              "version": "1.0.4",
-              "from": "inflight@>=1.0.4 <2.0.0"
-            }
-          }
+          "resolved": "https://registry.npmjs.org/glob/-/glob-6.0.4.tgz"
         }
       }
     },

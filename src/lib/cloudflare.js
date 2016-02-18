@@ -1,8 +1,9 @@
-import { asn1, pki } from 'node-forge'
+import { createVerify } from 'crypto'
 
-const caStore = pki.createCaStore()
+import { Certificate, TBSCertificate } from './x509-in-asn1'
+
 // CA from <https://support.cloudflare.com/hc/en-us/articles/204899617>.
-caStore.addCertificate(`-----BEGIN CERTIFICATE-----
+const originPullCa = `-----BEGIN CERTIFICATE-----
 MIIGBjCCA/CgAwIBAgIIV5G6lVbCLmEwCwYJKoZIhvcNAQENMIGQMQswCQYDVQQG
 EwJVUzEZMBcGA1UEChMQQ2xvdWRGbGFyZSwgSW5jLjEUMBIGA1UECxMLT3JpZ2lu
 IFB1bGwxFjAUBgNVBAcTDVNhbiBGcmFuY2lzY28xEzARBgNVBAgTCkNhbGlmb3Ju
@@ -37,25 +38,44 @@ wUGkD7+bQAr+7vr8/R+CBmNMe7csE8NeEX6lVMF7Dh0a1YKQa6hUN18bBuYgTMuT
 QzMmZpRpIBB321ZBlcnlxiTJvWxvbCPHKHj20VwwAz7LONF59s84ZsOqfoBv8gKM
 s0s5dsq5zpLeaw==
 -----END CERTIFICATE-----
-`)
-
-const verifiedFingerprints = new Set()
+`
 
 export function verifyPullOrigin (peerCertificate) {
   if (!peerCertificate || !peerCertificate.raw) return false
 
-  const { fingerprint, raw } = peerCertificate
-  if (verifiedFingerprints.has(fingerprint)) {
-    return true
-  }
-
-  // raw is a buffer, but fromDer() seems to want a binary string.
-  const cert = pki.certificateFromAsn1(asn1.fromDer(raw.toString('binary')), true)
-  // Throws if unsuccessful…
   try {
-    pki.verifyCertificateChain(caStore, [cert])
-    verifiedFingerprints.add(fingerprint)
-    return true
+    const {
+      tbsCertificate,
+      tbsCertificate: {
+        validity: {
+          notBefore: { value: notBefore },
+          notAfter: { value: notAfter }
+        }
+      },
+      signatureAlgorithm: { algorithm },
+      signature: { data: signature }
+    } = Certificate.decode(peerCertificate.raw, 'der')
+
+    // Require sha512WithRSAEncryption.
+    if (algorithm.join('.') !== '1.2.840.113549.1.1.13') {
+      return false
+    }
+
+    // Check if certificate is still valid.–
+    const now = Date.now()
+    if (now < notBefore || now > notAfter) {
+      return false
+    }
+
+    // Make sure the certificate was signed by CloudFlare's origin pull
+    // certificate authority.
+    const verify = createVerify('RSA-SHA512')
+    verify.update(TBSCertificate.encode(tbsCertificate, 'der'))
+    return verify.verify(originPullCa, signature)
+
+    // N.B. This only checks if the timestamps are valid and if the signature
+    // matches. Proper certificate validation requires more checks but that
+    // seems unnecessary in this case.
   } catch (err) {
     return false
   }

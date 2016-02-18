@@ -32,7 +32,7 @@ createServer({
   logger.info({ req }, 'request-start')
 
   try {
-    if (requestCert && !verifyPullOrigin(req.client.getPeerCertificate(true))) {
+    if (requestCert && !verifyPullOrigin(req.client.getPeerCertificate())) {
       req.client.destroy()
       logger.info({ req }, 'reject-client-certificate')
       return
