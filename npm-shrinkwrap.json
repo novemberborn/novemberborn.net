@@ -135,9 +135,9 @@
       "resolved": "https://registry.npmjs.org/asn1/-/asn1-0.2.3.tgz"
     },
     "asn1.js": {
-      "version": "4.4.0",
-      "from": "asn1.js@latest",
-      "resolved": "https://registry.npmjs.org/asn1.js/-/asn1.js-4.4.0.tgz"
+      "version": "4.5.0",
+      "from": "asn1.js@>=4.5.0 <5.0.0",
+      "resolved": "https://registry.npmjs.org/asn1.js/-/asn1.js-4.5.0.tgz"
     },
     "assert-plus": {
       "version": "0.1.5",
@@ -637,6 +637,10 @@
       "version": "1.0.0",
       "from": "clone-regexp@>=1.0.0 <2.0.0",
       "resolved": "https://registry.npmjs.org/clone-regexp/-/clone-regexp-1.0.0.tgz"
+    },
+    "cloudflare-origin-pull": {
+      "version": "1.0.0",
+      "from": "cloudflare-origin-pull@latest"
     },
     "coa": {
       "version": "1.0.1",

@@ -5,7 +5,7 @@ import convertHrTime from 'convert-hrtime'
 import sourceMapSupport from 'source-map-support'
 
 import { ANY_CLIENT, NODE_ENV } from './lib/env'
-import { verifyPullOrigin } from './lib/cloudflare'
+import { verify as verifyPullOrigin } from 'cloudflare-origin-pull'
 import logger from './lib/logger'
 import pfx from './lib/pfx'
 import { route } from './lib/router'
