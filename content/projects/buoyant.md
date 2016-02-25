@@ -1,5 +1,3 @@
-![A series of rubber duckies, one with a stormtrooper helmet](buoyant.jpg)
-
 # Buoyant
 
 Buoyant's goal is to make it easier to build distributed systems that fit your

@@ -22,12 +22,3 @@ compressed using [ImageOptim](https://imageoptim.com/).
 SVG sourced from the [babel.github.io
 repository](https://github.com/babel/babel.github.io/blob/bfcc9a86e0d7bec3369ace79c574dfed07b02135/images/logo.svg),
 compressed using [SVGOMG](https://jakearchibald.github.io/svgomg/).
-
----
-
-![A series of rubber duckies, one with a stormtrooper helmet](buoyant.jpg)
-
-Adapted from [JD Hancock's
-photo](https://www.flickr.com/photos/jdhancock/6151250051) under the [CC BY 2.0
-license](https://creativecommons.org/licenses/by/2.0/), compressed using
-[ImageOptim](https://imageoptim.com/).
