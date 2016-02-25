@@ -22,7 +22,9 @@ frameworks.
 I'm also experienced with [AWS](https://aws.amazon.com/),
 [Docker](https://www.docker.com/) and [CoreOS](https://coreos.com/).
 
-I'm accustomed to contributing to open-source projects.
+I'm accustomed to contributing to open-source projects, for instance I'm part of
+the team behind [AVA](https://github.com/sindresorhus/ava) and a collaborator on
+the [nyc](https://github.com/bcoe/nyc) code coverage project.
 
 ## Background
 
