@@ -64,6 +64,20 @@
     "remarkable": "^1.6.2",
     "source-map-support": "^0.4.0"
   },
+  "babel": {
+    "compact": false,
+    "plugins": [
+      "handlebars-inline-precompile",
+      "import-glob",
+      "files",
+      "transform-async-to-generator",
+      "transform-es2015-destructuring",
+      "transform-es2015-modules-commonjs",
+      "transform-es2015-parameters",
+      "transform-object-rest-spread",
+      "transform-strict-mode"
+    ]
+  },
   "standard": {
     "parser": "babel-eslint"
   }
