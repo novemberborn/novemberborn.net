@@ -10,11 +10,10 @@ source](https://github.com/novemberborn/novemberborn.net/).
 
 ## Image Credits
 
-![Node.js Logo](nodejs.svg)
+![Node.js Logo](nodejs.png)
 
-SVG [courtesy of
-WikiMedia](https://commons.wikimedia.org/wiki/File:Node.js_logo.svg), compressed
-using [SVGOMG](https://jakearchibald.github.io/svgomg/).
+[PNG](https://drive.google.com/file/d/0B2SAGsHi4DjIaDV5U1g3OXlYY2M/view),
+compressed using [ImageOptim](https://imageoptim.com/).
 
 ---
 
