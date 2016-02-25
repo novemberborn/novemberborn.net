@@ -36,8 +36,8 @@ Encrypt](https://letsencrypt.org/) /
 framework for building distributed systems using the [Raft Consensus
 Algorithm](https://raft.github.io/).
 
-I'm a collaborator on the [nyc](https://github.com/bcoe/nyc) code coverage
-project.
+I'm part of the team behind [AVA](https://github.com/sindresorhus/ava) and a
+collaborator on the [nyc](https://github.com/bcoe/nyc) code coverage project.
 
 Back in the ES5 era I wrote a small ecosystem of [functional promise-based
 libraries](/projects/legendary).
