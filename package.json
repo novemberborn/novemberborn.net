@@ -41,7 +41,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.5.0",
     "babel-plugin-transform-strict-mode": "^6.5.2",
     "cssnano": "^3.5.2",
-    "nodemon": "^1.9.0",
+    "nodemon": "^1.9.1",
     "parallelshell": "^2.0.0",
     "postcss-cli": "^2.5.1",
     "postcss-nested": "^1.0.0",
