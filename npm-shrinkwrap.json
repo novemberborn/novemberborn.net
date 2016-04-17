@@ -616,9 +616,9 @@
       "resolved": "https://registry.npmjs.org/builtin-modules/-/builtin-modules-1.1.1.tgz"
     },
     "bunyan": {
-      "version": "1.7.0",
-      "from": "bunyan@1.7.0",
-      "resolved": "https://registry.npmjs.org/bunyan/-/bunyan-1.7.0.tgz"
+      "version": "1.8.0",
+      "from": "bunyan@1.8.0",
+      "resolved": "https://registry.npmjs.org/bunyan/-/bunyan-1.8.0.tgz"
     },
     "caller-path": {
       "version": "0.1.0",
@@ -2226,9 +2226,9 @@
       "resolved": "https://registry.npmjs.org/mkdirp/-/mkdirp-0.5.1.tgz"
     },
     "moment": {
-      "version": "2.11.2",
+      "version": "2.12.0",
       "from": "moment@>=2.10.6 <3.0.0",
-      "resolved": "https://registry.npmjs.org/moment/-/moment-2.11.2.tgz"
+      "resolved": "https://registry.npmjs.org/moment/-/moment-2.12.0.tgz"
     },
     "ms": {
       "version": "0.7.1",
