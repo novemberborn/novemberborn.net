@@ -16,7 +16,7 @@
     "docker": "docker run --rm --name=site -p 443:8443 -e ANY_CLIENT=true -e CERT_NAME=development --env-file=.env novemberborn-dot-net | bunyan",
     "list-content-routes": "node scripts/list-content-routes",
     "nodemon": "nodemon | bunyan",
-    "test": "standard && stylelint src/**/*.css"
+    "test": "as-i-preach && stylelint src/**/*.css"
   },
   "repository": {
     "type": "git",
@@ -28,9 +28,9 @@
   "homepage": "https://github.com/novemberborn/novemberborn.net#readme",
   "license": "UNLICENSED",
   "devDependencies": {
+    "@novemberborn/as-i-preach": "^2.0.1",
     "autoprefixer": "^6.3.3",
     "babel-cli": "^6.5.1",
-    "babel-eslint": "^5.0.0",
     "babel-plugin-files": "^1.0.0",
     "babel-plugin-handlebars-inline-precompile": "^2.1.0",
     "babel-plugin-import-glob": "^1.0.1",
@@ -47,7 +47,6 @@
     "postcss-nested": "^1.0.0",
     "postcss-normalize": "^0.1.2",
     "rimraf": "^2.5.2",
-    "standard": "^6.0.7",
     "stylelint": "^4.4.0",
     "stylelint-config-standard": "^3.0.0",
     "uglify-js": "^2.6.2"
@@ -77,8 +76,5 @@
       "transform-object-rest-spread",
       "transform-strict-mode"
     ]
-  },
-  "standard": {
-    "parser": "babel-eslint"
   }
 }

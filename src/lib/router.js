@@ -1,3 +1,9 @@
+import {
+  content as contentPartial,
+  notFound,
+  skeleton
+} from 'glob:../templates/*.js'
+
 import { routes as staticRoutes } from './static-files'
 import {
   render as renderContent,
@@ -5,12 +11,6 @@ import {
 } from './content'
 import { NODE_ENV } from './env'
 import securityHeaders from './security-headers'
-
-import {
-  content as contentPartial,
-  notFound,
-  skeleton
-} from 'glob:../templates/*.js'
 
 const FourHours = 4 * 60 * 60
 const NinetyDays = 90 * 24 * 60 * 60

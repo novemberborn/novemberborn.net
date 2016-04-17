@@ -25,7 +25,7 @@ function getContents (file) {
     const promise = file[cacheSymbol] = new Promise((resolve, reject) => {
       readFile(file.src, (err, chunk) => err ? reject(err) : resolve(chunk))
     })
-    const clear = () => file[cacheSymbol] = null
+    const clear = () => { file[cacheSymbol] = null }
     promise.then(clear, clear)
   }
 

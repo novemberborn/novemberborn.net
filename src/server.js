@@ -1,18 +1,17 @@
 import { createServer } from 'https'
 import { parse as parseUrl } from 'url'
 
+import { verify as verifyPullOrigin } from 'cloudflare-origin-pull'
 import convertHrTime from 'convert-hrtime'
 import sourceMapSupport from 'source-map-support'
 
+import { skeleton, serverError } from 'glob:templates/*.js'
 import { ANY_CLIENT, NODE_ENV } from './lib/env'
-import { verify as verifyPullOrigin } from 'cloudflare-origin-pull'
 import logger from './lib/logger'
 import pfx from './lib/pfx'
 import { route } from './lib/router'
 import securityHeaders from './lib/security-headers'
 import sentry from './lib/sentry'
-
-import { skeleton, serverError } from 'glob:templates/*.js'
 
 const errorBody = new Buffer(skeleton({
   title: '500 Internal Server Error',

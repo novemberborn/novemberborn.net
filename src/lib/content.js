@@ -5,9 +5,8 @@ import findCacheDir from 'find-cache-dir'
 import mkdirp from 'mkdirp'
 import Remarkable from 'remarkable'
 
-import { getPath } from './static-files'
-
 import files from 'files:../../content/**/*.md'
+import { getPath } from './static-files'
 
 const cacheDir = findCacheDir({ name: 'net.novemberborn' })
 const md = new Remarkable({
