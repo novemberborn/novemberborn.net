@@ -5,6 +5,9 @@
 I maintain several smallish Node.js modules. Here's a list of the most
 noteworthy ones, in alphabetical order:
 
+* [`as-i-preach`](https://github.com/novemberborn/as-i-preach) is my preferred
+[ESLint](http://eslint.org/) setup.
+
 * [`cloudflare-origin-pull`](https://github.com/novemberborn/cloudflare-origin-pull)
 helps you verify requests to your Node server came from CloudFlare. Used by this
 site!
@@ -24,6 +27,10 @@ provides a list of directories that should probably be ignored by development
 tools, e.g. when watching for file changes. Used by
 [AVA](https://github.com/sindresorhus/ava).
 
+* [`package-hash`](https://github.com/novemberborn/package-hash) generates a
+hash for an installed npm package, which is useful for salting caches. Used by
+[AVA](https://github.com/sindresorhus/ava).
+
 * [`sixtyfour`](https://github.com/novemberborn/sixtyfour) contains Base64
 utilities.
 
@@ -36,3 +43,6 @@ be used to test code that needs to resolve or apply source maps. Used by
 * [`unicode-diff`](https://github.com/novemberborn/unicode-diff) provides the
 differences between Unicode versions. Useful when dealing with programs that
 don't handle newer code points.
+
+* [`x690`](https://github.com/novemberborn/x690) is a low-level decoder for
+X.690 Distinguished Encoding Rules (DER).
