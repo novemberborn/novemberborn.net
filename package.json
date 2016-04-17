@@ -76,5 +76,8 @@
       "transform-object-rest-spread",
       "transform-strict-mode"
     ]
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard"
   }
 }
