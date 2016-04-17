@@ -1,5 +1,5 @@
 {
-  "name": "novemberborn.net",
+  "name": "@novemberborn/website",
   "version": "2.0.0",
   "dependencies": {
     "@novemberborn/as-i-preach": {
