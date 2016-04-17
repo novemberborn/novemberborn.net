@@ -12,6 +12,7 @@ RUN cp -R /app/* ./
 RUN npm prune --silent --prod
 
 WORKDIR /app
+COPY scripts ./scripts
 COPY postcss.json ./
 COPY certs ./certs
 COPY src ./src
@@ -20,4 +21,4 @@ COPY static ./static
 
 RUN npm test
 RUN npm run build
-RUN rm -rf postcss.json npm-shrinkwrap.json src
+RUN rm -rf postcss.json npm-shrinkwrap.json scripts src

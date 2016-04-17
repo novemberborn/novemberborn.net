@@ -2679,11 +2679,6 @@
       "from": "package-json@>=1.0.0 <2.0.0",
       "resolved": "https://registry.npmjs.org/package-json/-/package-json-1.2.0.tgz"
     },
-    "parallelshell": {
-      "version": "2.0.0",
-      "from": "parallelshell@>=2.0.0 <3.0.0",
-      "resolved": "https://registry.npmjs.org/parallelshell/-/parallelshell-2.0.0.tgz"
-    },
     "parse-glob": {
       "version": "3.0.4",
       "from": "parse-glob@>=3.0.4 <4.0.0",
@@ -3231,6 +3226,23 @@
       "version": "1.1.5",
       "from": "sax@>=1.1.4 <1.2.0",
       "resolved": "https://registry.npmjs.org/sax/-/sax-1.1.5.tgz"
+    },
+    "scripty": {
+      "version": "1.4.0",
+      "from": "scripty@latest",
+      "resolved": "https://registry.npmjs.org/scripty/-/scripty-1.4.0.tgz",
+      "dependencies": {
+        "glob": {
+          "version": "7.0.3",
+          "from": "glob@>=7.0.3 <8.0.0",
+          "resolved": "https://registry.npmjs.org/glob/-/glob-7.0.3.tgz"
+        },
+        "lodash": {
+          "version": "4.11.1",
+          "from": "lodash@>=4.8.2 <5.0.0",
+          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.11.1.tgz"
+        }
+      }
     },
     "semver": {
       "version": "4.3.6",

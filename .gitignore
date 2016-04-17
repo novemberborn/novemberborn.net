@@ -7,7 +7,6 @@ node_modules
 /server.js
 /server.js.map
 /lib
-/scripts
 /templates
 
 /static/browser.js
