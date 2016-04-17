@@ -13,7 +13,7 @@ const cacheDir = findCacheDir({ name: 'net.novemberborn' })
 const md = new Remarkable({
   html: true,
   typographer: true
-}).use((md) => {
+}).use(md => {
   // Replace the image renderer so static file names can be used.
   const { rules } = md.renderer
   const { image } = rules
@@ -33,14 +33,14 @@ const inProgress = new Map()
 function getFromCacheOrRender (src, tag) {
   if (inProgress.has(tag)) return inProgress.get(tag)
 
-  const promise = new Promise((resolve) => {
+  const promise = new Promise(resolve => {
     const cacheSrc = join(cacheDir, `${tag}.html`)
     readFile(cacheSrc, (err, contents) => {
       if (err) {
         const rendered = renderMarkdown(src)
         resolve(rendered)
-        rendered.then((contents) => {
-          mkdirp(cacheDir, (err) => {
+        rendered.then(contents => {
+          mkdirp(cacheDir, err => {
             if (!err) writeFile(cacheSrc, contents, () => {})
           })
         })
@@ -58,7 +58,7 @@ function getFromCacheOrRender (src, tag) {
 function renderMarkdown (src) {
   return new Promise((resolve, reject) => {
     readFile(src, 'utf8', (err, str) => err ? reject(err) : resolve(str))
-  }).then((str) => new Buffer(md.render(str), 'utf8'))
+  }).then(str => new Buffer(md.render(str), 'utf8'))
 }
 
 export async function render (name) {

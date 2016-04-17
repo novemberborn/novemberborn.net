@@ -61,7 +61,7 @@ if (sentry) {
         // `instanceof Error`. Bunyan returns a regular object, which the
         // configured serializer has tagged as originally being a proper
         // error.
-        sentryParsers.parseError(err, { extra, level }, (kwargs) => {
+        sentryParsers.parseError(err, { extra, level }, kwargs => {
           sentry.process(kwargs)
           done()
         })
