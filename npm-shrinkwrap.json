@@ -296,15 +296,18 @@
       "dependencies": {
         "babel-traverse": {
           "version": "6.5.0",
-          "from": "babel-traverse@>=6.4.5 <7.0.0"
+          "from": "babel-traverse@6.5.0",
+          "resolved": "https://registry.npmjs.org/babel-traverse/-/babel-traverse-6.5.0.tgz"
         },
         "babel-types": {
           "version": "6.5.1",
-          "from": "babel-types@>=6.4.5 <7.0.0"
+          "from": "babel-types@6.5.1",
+          "resolved": "https://registry.npmjs.org/babel-types/-/babel-types-6.5.1.tgz"
         },
         "babylon": {
           "version": "6.5.0",
-          "from": "babylon@>=6.4.5 <7.0.0"
+          "from": "babylon@6.5.0",
+          "resolved": "https://registry.npmjs.org/babylon/-/babylon-6.5.0.tgz"
         }
       }
     },
@@ -320,7 +323,7 @@
     },
     "babel-plugin-files": {
       "version": "1.0.0",
-      "from": "babel-plugin-files@latest",
+      "from": "babel-plugin-files@1.0.0",
       "dependencies": {
         "babel-runtime": {
           "version": "6.5.0",
@@ -382,7 +385,8 @@
       "dependencies": {
         "babel-traverse": {
           "version": "6.5.0",
-          "from": "babel-traverse@>=6.4.5 <7.0.0"
+          "from": "babel-traverse@6.5.0",
+          "resolved": "https://registry.npmjs.org/babel-traverse/-/babel-traverse-6.5.0.tgz"
         },
         "babel-types": {
           "version": "6.5.2",
@@ -391,7 +395,8 @@
         },
         "babylon": {
           "version": "6.5.2",
-          "from": "babylon@>=6.4.5 <7.0.0"
+          "from": "babylon@6.5.2",
+          "resolved": "https://registry.npmjs.org/babylon/-/babylon-6.5.2.tgz"
         }
       }
     },
@@ -431,7 +436,8 @@
         },
         "babel-types": {
           "version": "6.5.2",
-          "from": "babel-types@>=6.5.2 <7.0.0"
+          "from": "babel-types@6.5.2",
+          "resolved": "https://registry.npmjs.org/babel-types/-/babel-types-6.5.2.tgz"
         },
         "babylon": {
           "version": "6.5.2",
@@ -745,11 +751,11 @@
     },
     "common-extname": {
       "version": "1.0.0",
-      "from": "common-extname@>=1.0.0 <2.0.0"
+      "from": "common-extname@1.0.0"
     },
     "common-path-prefix": {
       "version": "1.0.0",
-      "from": "common-path-prefix@>=1.0.0 <2.0.0"
+      "from": "common-path-prefix@1.0.0"
     },
     "commondir": {
       "version": "1.0.1",
@@ -892,7 +898,8 @@
         },
         "glob": {
           "version": "6.0.4",
-          "from": "glob@>=6.0.4 <7.0.0"
+          "from": "glob@6.0.4",
+          "resolved": "https://registry.npmjs.org/glob/-/glob-6.0.4.tgz"
         }
       }
     },
@@ -1443,11 +1450,12 @@
     },
     "identifierfy": {
       "version": "1.1.1",
-      "from": "identifierfy@>=1.1.0 <2.0.0",
+      "from": "identifierfy@1.1.1",
       "dependencies": {
         "babel-runtime": {
           "version": "6.5.0",
-          "from": "babel-runtime@>=6.3.19 <7.0.0"
+          "from": "babel-runtime@6.5.0",
+          "resolved": "https://registry.npmjs.org/babel-runtime/-/babel-runtime-6.5.0.tgz"
         }
       }
     },
@@ -2125,7 +2133,7 @@
         },
         "semver": {
           "version": "5.1.0",
-          "from": "semver@>=5.1.0 <5.2.0",
+          "from": "semver@~5.1.0",
           "resolved": "https://registry.npmjs.org/semver/-/semver-5.1.0.tgz"
         }
       }
@@ -2492,7 +2500,8 @@
       "dependencies": {
         "lodash": {
           "version": "4.5.1",
-          "from": "lodash@>=4.1.0 <5.0.0"
+          "from": "lodash@4.5.1",
+          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.5.1.tgz"
         }
       }
     },
@@ -2503,15 +2512,18 @@
       "dependencies": {
         "postcss": {
           "version": "5.0.16",
-          "from": "postcss@>=5.0.16 <6.0.0"
+          "from": "postcss@5.0.16",
+          "resolved": "https://registry.npmjs.org/postcss/-/postcss-5.0.16.tgz"
         },
         "source-map": {
           "version": "0.5.3",
-          "from": "source-map@>=0.5.1 <0.6.0"
+          "from": "source-map@0.5.3",
+          "resolved": "https://registry.npmjs.org/source-map/-/source-map-0.5.3.tgz"
         },
         "supports-color": {
           "version": "3.1.2",
-          "from": "supports-color@>=3.1.2 <4.0.0"
+          "from": "supports-color@3.1.2",
+          "resolved": "https://registry.npmjs.org/supports-color/-/supports-color-3.1.2.tgz"
         }
       }
     },
