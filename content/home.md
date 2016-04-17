@@ -22,8 +22,8 @@ Show](http://daringfireball.net/thetalkshow/).
 ## Skills & Background
 
 I've been working with the web professionally for over ten years. Initially a
-front-end engineer I'm now more interested in building products as a whole. I'm
-open to challenging projects. [Learn more about my skills and
+front-end engineer I'm now interested in backend systems, JavaScript tooling and
+product development. [Learn more about my skills and
 background](/skills-and-background).
 
 ## Projects
@@ -41,6 +41,11 @@ collaborator on the [nyc](https://github.com/bcoe/nyc) code coverage project.
 
 Back in the ES5 era I wrote a small ecosystem of [functional promise-based
 libraries](/projects/legendary).
+
+## Consulting
+
+I provide consulting services through my company, Initial Commit Ltd. [Find out
+more](/consulting).
 
 ## Elsewhere
 

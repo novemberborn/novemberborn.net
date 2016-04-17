@@ -1,11 +1,9 @@
 # Skills & Background
 
 I've been working with the web professionally for over ten years. Initially a
-front-end engineer I'm now more interested in building products as a whole. I'm
-open to challenging projects, so feel free to <a
-data-email="bcd1ddced7fcd2d3cad9d1ded9ceded3ced292d2d9c8">contact me</a>.
-
-*Please, no external recruiters.*
+front-end engineer I'm now interested in backend systems, JavaScript tooling and
+product development. I'm open to challenging projects, perhaps you want to [work
+with me](/consulting)?
 
 I'm good at considering problems from multiple angles, including the
 non-technical ones. I frequently work at different levels of abstraction, e.g.

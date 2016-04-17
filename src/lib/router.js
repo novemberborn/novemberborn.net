@@ -29,6 +29,11 @@ const table = {
       content: await renderContent('colophon')
     }
   },
+  async '/consulting' () {
+    return {
+      content: await renderContent('consulting')
+    }
+  },
   async '/projects' () {
     return {
       content: await renderContent('projects')
