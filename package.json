@@ -35,9 +35,7 @@
     "babel-plugin-handlebars-inline-precompile": "^2.1.0",
     "babel-plugin-import-glob": "^1.0.1",
     "babel-plugin-transform-async-to-generator": "^6.7.4",
-    "babel-plugin-transform-es2015-destructuring": "^6.6.5",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.7.4",
-    "babel-plugin-transform-es2015-parameters": "^6.7.0",
     "babel-plugin-transform-object-rest-spread": "^6.6.5",
     "babel-plugin-transform-strict-mode": "^6.6.5",
     "cssnano": "^3.5.2",
@@ -69,9 +67,7 @@
       "import-glob",
       "files",
       "transform-async-to-generator",
-      "transform-es2015-destructuring",
       "transform-es2015-modules-commonjs",
-      "transform-es2015-parameters",
       "transform-object-rest-spread",
       "transform-strict-mode"
     ]
