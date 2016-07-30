@@ -1,6 +1,9 @@
 import { readFile } from 'fs'
 
-import files from 'files:../../static/*.*'
+import staticFiles from 'files:../../static/*.*'
+import browserFiles from 'files:../../dist/{browser,style}.*'
+
+const files = Object.assign({}, staticFiles, browserFiles)
 
 const paths = new Map()
 const inverse = new Map()

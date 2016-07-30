@@ -3,13 +3,4 @@
 node_modules
 
 /certs
-
-/server.js
-/server.js.map
-/lib
-/templates
-
-/static/browser.js
-/static/browser.js.map
-/static/style.css
-/static/style.css.map
+/dist
