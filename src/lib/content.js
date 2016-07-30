@@ -65,10 +65,11 @@ async function getFromCacheOrRender (src, tag) {
   }
 }
 
-function renderMarkdown (src) {
-  return new Promise((resolve, reject) => {
+async function renderMarkdown (src) {
+  const str = await new Promise((resolve, reject) => {
     readFile(src, 'utf8', (err, str) => err ? reject(err) : resolve(str))
-  }).then(str => new Buffer(md.render(str), 'utf8'))
+  })
+  return new Buffer(md.render(str), 'utf8')
 }
 
 export async function render (name) {
