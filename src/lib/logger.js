@@ -78,11 +78,11 @@ const serializers = Object.assign({}, stdSerializers, {
 
     // Extract standard properties which may not be enumerable, and the
     // remainder.
-    const { message, name, code, signal, ...result } = err
+    const { message, name, code, signal } = err
     // Use Bunyan to get the stack trace.
     const { stack } = stdSerializers.err(err)
     // Put the standard properties back on the result object.
-    return Object.assign(result, {
+    return Object.assign({}, err, {
       [errorTag]: true, // Tag the object so the Sentry stream can recognize it.
       code,
       message,
