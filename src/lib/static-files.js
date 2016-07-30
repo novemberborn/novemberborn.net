@@ -22,17 +22,23 @@ for (const name in files) {
   inverse.set(name, path)
 }
 
-const cacheSymbol = Symbol
-function getContents (file) {
-  if (!file[cacheSymbol]) {
-    const promise = file[cacheSymbol] = new Promise((resolve, reject) => {
-      readFile(file.src, (err, chunk) => err ? reject(err) : resolve(chunk))
-    })
-    const clear = () => { file[cacheSymbol] = null }
-    promise.then(clear, clear)
-  }
+const cacheSymbol = Symbol()
+async function getContents (file) {
+  // Reuse promises in case of concurrent access.
+  if (file[cacheSymbol]) return file[cacheSymbol]
 
-  return file[cacheSymbol]
+  const promise = file[cacheSymbol] = new Promise((resolve, reject) => {
+    readFile(file.src, (err, chunk) => err ? reject(err) : resolve(chunk))
+  })
+
+  try {
+    // Await the promise rather than returning it, so cleanup can happen in the
+    // finally clause.
+    return await promise
+  } finally {
+    // Clean up to avoid wasting memory.
+    file[cacheSymbol] = null
+  }
 }
 
 export const routes = {
