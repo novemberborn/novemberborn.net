@@ -8,11 +8,12 @@ import {
 // Monkey-patch to remove modules lookup.
 utils.getModules = () => ({})
 
-let sentry = null
+let client = null
 if (environment === 'production' && SENTRY_DSN) {
-  sentry = new Client(SENTRY_DSN, {
+  client = new Client(SENTRY_DSN, {
     tags: { environment }
   })
 }
 
+const sentry = client
 export default sentry

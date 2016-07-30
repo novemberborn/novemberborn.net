@@ -28,7 +28,7 @@
   "homepage": "https://github.com/novemberborn/novemberborn.net#readme",
   "license": "UNLICENSED",
   "devDependencies": {
-    "@novemberborn/as-i-preach": "^2.0.1",
+    "@novemberborn/as-i-preach": "^4.0.2",
     "autoprefixer": "^6.3.7",
     "babel-cli": "^6.11.4",
     "babel-plugin-files": "^1.0.0",
