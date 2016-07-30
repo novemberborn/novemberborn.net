@@ -29,29 +29,40 @@ const md = new Remarkable({
 })
 
 const inProgress = new Map()
-function getFromCacheOrRender (src, tag) {
+async function getFromCacheOrRender (src, tag) {
+  // Reuse promises in case of concurrent access.
   if (inProgress.has(tag)) return inProgress.get(tag)
 
   const promise = new Promise(resolve => {
     const cacheSrc = join(cacheDir, `${tag}.html`)
-    readFile(cacheSrc, (err, contents) => {
-      if (err) {
-        const rendered = renderMarkdown(src)
-        resolve(rendered)
-        rendered.then(contents => {
-          mkdirp(cacheDir, err => {
-            if (!err) writeFile(cacheSrc, contents, () => {})
-          })
-        })
-      } else {
+    readFile(cacheSrc, async (err, contents) => {
+      if (!err) {
         resolve(contents)
+        return
+      }
+
+      const rendered = renderMarkdown(src)
+      resolve(rendered)
+
+      // Attempt to write the rendered content to the on-disk cache.
+      {
+        const contents = await rendered
+        mkdirp(cacheDir, err => {
+          if (!err) writeFile(cacheSrc, contents, () => {})
+        })
       }
     })
   })
-  const clear = () => inProgress.delete(tag)
-  promise.then(clear, clear)
   inProgress.set(tag, promise)
-  return promise
+
+  try {
+    // Await the promise rather than returning it, so cleanup can happen in the
+    // finally clause.
+    return await promise
+  } finally {
+    // Clean up to avoid wasting memory.
+    inProgress.delete(tag)
+  }
 }
 
 function renderMarkdown (src) {
