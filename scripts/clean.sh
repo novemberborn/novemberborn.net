@@ -1,3 +1,3 @@
 #!/bin/sh
 set -e
-rimraf dist
+rm -rf dist
