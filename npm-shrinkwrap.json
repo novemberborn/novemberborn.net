@@ -4,7 +4,8 @@
   "dependencies": {
     "@novemberborn/as-i-preach": {
       "version": "2.0.1",
-      "from": "@novemberborn/as-i-preach@latest"
+      "from": "@novemberborn/as-i-preach@latest",
+      "resolved": "https://registry.npmjs.org/@novemberborn/as-i-preach/-/as-i-preach-2.0.1.tgz"
     },
     "abbrev": {
       "version": "1.0.7",
