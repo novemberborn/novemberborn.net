@@ -12,12 +12,7 @@ RUN cp -R /app/* ./
 RUN npm prune --silent --prod
 
 WORKDIR /app
-COPY scripts ./scripts
-COPY postcss.json ./
-COPY certs ./certs
-COPY src ./src
-COPY content ./content
-COPY static ./static
+COPY ./ ./
 
 RUN npm test
 RUN npm run build
