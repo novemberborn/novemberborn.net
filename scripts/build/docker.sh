@@ -11,8 +11,13 @@ docker create --name novemberborn-dot-net-build novemberborn-dot-net-build /bin/
 
 # Extract production dependencies and built app code from the container.
 tmp=$(mktemp -d)
+echo "Created ${tmp}"
 docker cp novemberborn-dot-net-build:/prod_modules/node_modules/. - > ${tmp}/node_modules.tgz
 docker cp novemberborn-dot-net-build:/app/. - > ${tmp}/full.tgz
+
+# Ensure integrity
+tar tf ${tmp}/node_modules.tgz > /dev/null
+tar tf ${tmp}/full.tgz > /dev/null
 
 # Remove dev dependencies from the app code.
 tar -c --exclude './node_modules' -f ${tmp}/app.tgz @${tmp}/full.tgz
