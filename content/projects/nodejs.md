@@ -25,11 +25,11 @@ identifier string so its valid according to ES2015.
 * [`ignore-by-default`](https://github.com/novemberborn/ignore-by-default)
 provides a list of directories that should probably be ignored by development
 tools, e.g. when watching for file changes. Used by
-[AVA](https://github.com/sindresorhus/ava).
+[AVA](https://github.com/avajs/ava).
 
 * [`package-hash`](https://github.com/novemberborn/package-hash) generates a
 hash for an installed npm package, which is useful for salting caches. Used by
-[AVA](https://github.com/sindresorhus/ava).
+[AVA](https://github.com/avajs/ava).
 
 * [`sixtyfour`](https://github.com/novemberborn/sixtyfour) contains Base64
 utilities.
@@ -37,7 +37,7 @@ utilities.
 * [`source-map-fixtures`](https://github.com/novemberborn/source-map-fixtures)
 are simple test fixtures backed by inline source maps and source map files. Can
 be used to test code that needs to resolve or apply source maps. Used by
-[AVA](https://github.com/sindresorhus/ava) and
+[AVA](https://github.com/avajs/ava) and
 [nyc](https://github.com/bcoe/nyc).
 
 * [`unicode-diff`](https://github.com/novemberborn/unicode-diff) provides the
