@@ -7,4 +7,5 @@
 * [`wilee`](/projects/wilee)
 
 I'm also part of the team behind [AVA](https://github.com/avajs/ava) and a
-collaborator on the [nyc](https://github.com/bcoe/nyc) code coverage project.
+collaborator on [Istanbul](https://github.com/istanbuljs/), primarily through my
+contributions to [nyc](https://github.com/istanbuljs/nyc), the Istanbul CLI.

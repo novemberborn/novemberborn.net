@@ -37,7 +37,8 @@ framework for building distributed systems using the [Raft Consensus
 Algorithm](https://raft.github.io/).
 
 I'm part of the team behind [AVA](https://github.com/avajs/ava) and a
-collaborator on the [nyc](https://github.com/bcoe/nyc) code coverage project.
+collaborator on [Istanbul](https://github.com/istanbuljs/), primarily through my
+contributions to [nyc](https://github.com/istanbuljs/nyc), the Istanbul CLI.
 
 Back in the ES5 era I wrote a small ecosystem of [functional promise-based
 libraries](/projects/legendary).

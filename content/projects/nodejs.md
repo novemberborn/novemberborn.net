@@ -38,7 +38,7 @@ utilities.
 are simple test fixtures backed by inline source maps and source map files. Can
 be used to test code that needs to resolve or apply source maps. Used by
 [AVA](https://github.com/avajs/ava) and
-[nyc](https://github.com/bcoe/nyc).
+[nyc](https://github.com/istanbuljs/nyc).
 
 * [`unicode-diff`](https://github.com/novemberborn/unicode-diff) provides the
 differences between Unicode versions. Useful when dealing with programs that

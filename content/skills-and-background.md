@@ -22,7 +22,8 @@ I'm also experienced with [AWS](https://aws.amazon.com/),
 
 I'm accustomed to contributing to open-source projects, for instance I'm part of
 the team behind [AVA](https://github.com/avajs/ava) and a collaborator on
-the [nyc](https://github.com/bcoe/nyc) code coverage project.
+[Istanbul](https://github.com/istanbuljs/), primarily through my contributions
+to [nyc](https://github.com/istanbuljs/nyc), the Istanbul CLI.
 
 ## Background
 
