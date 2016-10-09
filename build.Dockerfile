@@ -1,4 +1,4 @@
-FROM node:6.3.1
+FROM node:6.7.0
 
 WORKDIR /app
 COPY package.json npm-shrinkwrap.json ./
