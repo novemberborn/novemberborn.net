@@ -4595,9 +4595,9 @@
       }
     },
     "stylelint-config-standard": {
-      "version": "11.0.0",
+      "version": "13.0.2",
       "from": "stylelint-config-standard@latest",
-      "resolved": "https://registry.npmjs.org/stylelint-config-standard/-/stylelint-config-standard-11.0.0.tgz",
+      "resolved": "https://registry.npmjs.org/stylelint-config-standard/-/stylelint-config-standard-13.0.2.tgz",
       "dev": true
     },
     "sugarss": {

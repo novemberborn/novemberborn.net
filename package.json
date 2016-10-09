@@ -44,7 +44,7 @@
     "postcss-normalize": "^0.3.0",
     "scripty": "^1.6.0",
     "stylelint": "^7.4.0",
-    "stylelint-config-standard": "^11.0.0",
+    "stylelint-config-standard": "^13.0.2",
     "uglify-js": "^2.7.3"
   },
   "dependencies": {
