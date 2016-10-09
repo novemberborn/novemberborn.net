@@ -1,7 +1,7 @@
 FROM node:6.7.0
 
 WORKDIR /app
-COPY package.json npm-shrinkwrap.json ./
+COPY npm-shrinkwrap.json ./
 RUN npm install --silent
 
 # Copy the full set of dependencies, then remove the dev ones. Doing this before
@@ -9,6 +9,7 @@ RUN npm install --silent
 # cached layer in the final image.
 WORKDIR /prod_modules
 RUN cp -R /app/* ./
+COPY package.json ./
 RUN npm prune --silent --prod
 
 WORKDIR /app
