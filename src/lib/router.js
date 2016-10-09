@@ -6,7 +6,7 @@ import {
 
 import { routes as staticRoutes } from './static-files'
 import {
-  render as renderContent,
+  get as getContent,
   projects
 } from './content'
 import { NODE_ENV } from './env'
@@ -19,36 +19,36 @@ const TenDays = 10 * 24 * 60 * 60
 const contentCacheControl = NODE_ENV === 'production' ? `public, max-age=${FourHours}, s-maxage=${TenDays}` : 'no-store'
 
 const table = {
-  async '/' () {
+  '/' () {
     return {
-      content: await renderContent('home')
+      content: getContent('home')
     }
   },
-  async '/colophon' () {
+  '/colophon' () {
     return {
-      content: await renderContent('colophon')
+      content: getContent('colophon')
     }
   },
-  async '/consulting' () {
+  '/consulting' () {
     return {
-      content: await renderContent('consulting')
+      content: getContent('consulting')
     }
   },
-  async '/projects' () {
+  '/projects' () {
     return {
-      content: await renderContent('projects')
+      content: getContent('projects')
     }
   },
-  async '/skills-and-background' () {
+  '/skills-and-background' () {
     return {
-      content: await renderContent('skills-and-background')
+      content: getContent('skills-and-background')
     }
   }
 }
 
 for (const [subpath, contentName] of projects) {
-  table[`/projects/${subpath}`] = async () => ({
-    content: await renderContent(contentName)
+  table[`/projects/${subpath}`] = () => ({
+    content: getContent(contentName)
   })
 }
 
@@ -94,7 +94,7 @@ export async function route (pathname, host) {
 
   let context
   if (table.hasOwnProperty(pathname)) {
-    context = await table[pathname]()
+    context = table[pathname]()
   } else {
     statusCode = 404
     context = { contentPartial: notFound }

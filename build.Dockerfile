@@ -17,4 +17,4 @@ COPY ./ ./
 
 RUN npm test
 RUN npm run build
-RUN rm -rf postcss.json npm-shrinkwrap.json scripts src
+RUN rm -rf postcss.json npm-shrinkwrap.json content scripts src

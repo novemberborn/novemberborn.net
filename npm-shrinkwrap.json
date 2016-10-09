@@ -91,7 +91,8 @@
     "argparse": {
       "version": "0.1.16",
       "from": "argparse@>=0.1.15 <0.2.0",
-      "resolved": "https://registry.npmjs.org/argparse/-/argparse-0.1.16.tgz"
+      "resolved": "https://registry.npmjs.org/argparse/-/argparse-0.1.16.tgz",
+      "dev": true
     },
     "arr-diff": {
       "version": "2.0.0",
@@ -178,7 +179,8 @@
     "autolinker": {
       "version": "0.15.3",
       "from": "autolinker@>=0.15.0 <0.16.0",
-      "resolved": "https://registry.npmjs.org/autolinker/-/autolinker-0.15.3.tgz"
+      "resolved": "https://registry.npmjs.org/autolinker/-/autolinker-0.15.3.tgz",
+      "dev": true
     },
     "autoprefixer": {
       "version": "6.5.0",
@@ -1332,11 +1334,6 @@
       "resolved": "https://registry.npmjs.org/common-path-prefix/-/common-path-prefix-1.0.0.tgz",
       "dev": true
     },
-    "commondir": {
-      "version": "1.0.1",
-      "from": "commondir@>=1.0.1 <2.0.0",
-      "resolved": "https://registry.npmjs.org/commondir/-/commondir-1.0.1.tgz"
-    },
     "concat-map": {
       "version": "0.0.1",
       "from": "concat-map@0.0.1",
@@ -2052,11 +2049,6 @@
       "resolved": "https://registry.npmjs.org/fill-range/-/fill-range-2.2.3.tgz",
       "dev": true
     },
-    "find-cache-dir": {
-      "version": "0.1.1",
-      "from": "find-cache-dir@>=0.1.1 <0.2.0",
-      "resolved": "https://registry.npmjs.org/find-cache-dir/-/find-cache-dir-0.1.1.tgz"
-    },
     "find-root": {
       "version": "1.0.0",
       "from": "find-root@>=1.0.0 <2.0.0",
@@ -2066,7 +2058,8 @@
     "find-up": {
       "version": "1.1.0",
       "from": "find-up@>=1.0.0 <2.0.0",
-      "resolved": "https://registry.npmjs.org/find-up/-/find-up-1.1.0.tgz"
+      "resolved": "https://registry.npmjs.org/find-up/-/find-up-1.1.0.tgz",
+      "dev": true
     },
     "find-versions": {
       "version": "1.2.1",
@@ -3440,7 +3433,8 @@
     "path-exists": {
       "version": "2.1.0",
       "from": "path-exists@>=2.0.0 <3.0.0",
-      "resolved": "https://registry.npmjs.org/path-exists/-/path-exists-2.1.0.tgz"
+      "resolved": "https://registry.npmjs.org/path-exists/-/path-exists-2.1.0.tgz",
+      "dev": true
     },
     "path-is-absolute": {
       "version": "1.0.0",
@@ -3474,12 +3468,14 @@
     "pinkie": {
       "version": "2.0.1",
       "from": "pinkie@>=2.0.0 <3.0.0",
-      "resolved": "https://registry.npmjs.org/pinkie/-/pinkie-2.0.1.tgz"
+      "resolved": "https://registry.npmjs.org/pinkie/-/pinkie-2.0.1.tgz",
+      "dev": true
     },
     "pinkie-promise": {
       "version": "2.0.0",
       "from": "pinkie-promise@>=2.0.0 <3.0.0",
-      "resolved": "https://registry.npmjs.org/pinkie-promise/-/pinkie-promise-2.0.0.tgz"
+      "resolved": "https://registry.npmjs.org/pinkie-promise/-/pinkie-promise-2.0.0.tgz",
+      "dev": true
     },
     "pipetteur": {
       "version": "2.0.3",
@@ -3496,7 +3492,8 @@
     "pkg-dir": {
       "version": "1.0.0",
       "from": "pkg-dir@>=1.0.0 <2.0.0",
-      "resolved": "https://registry.npmjs.org/pkg-dir/-/pkg-dir-1.0.0.tgz"
+      "resolved": "https://registry.npmjs.org/pkg-dir/-/pkg-dir-1.0.0.tgz",
+      "dev": true
     },
     "pkg-up": {
       "version": "1.0.0",
@@ -4078,7 +4075,8 @@
     "remarkable": {
       "version": "1.7.1",
       "from": "remarkable@1.7.1",
-      "resolved": "https://registry.npmjs.org/remarkable/-/remarkable-1.7.1.tgz"
+      "resolved": "https://registry.npmjs.org/remarkable/-/remarkable-1.7.1.tgz",
+      "dev": true
     },
     "repeat-element": {
       "version": "1.1.2",
@@ -4962,12 +4960,14 @@
     "underscore": {
       "version": "1.7.0",
       "from": "underscore@>=1.7.0 <1.8.0",
-      "resolved": "https://registry.npmjs.org/underscore/-/underscore-1.7.0.tgz"
+      "resolved": "https://registry.npmjs.org/underscore/-/underscore-1.7.0.tgz",
+      "dev": true
     },
     "underscore.string": {
       "version": "2.4.0",
       "from": "underscore.string@>=2.4.0 <2.5.0",
-      "resolved": "https://registry.npmjs.org/underscore.string/-/underscore.string-2.4.0.tgz"
+      "resolved": "https://registry.npmjs.org/underscore.string/-/underscore.string-2.4.0.tgz",
+      "dev": true
     },
     "uniq": {
       "version": "1.0.1",

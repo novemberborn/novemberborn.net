@@ -6,6 +6,7 @@ import convertHrTime from 'convert-hrtime'
 import sourceMapSupport from 'source-map-support'
 
 import { skeleton, serverError } from 'glob:templates/*.js'
+import { prepareCache as prepareContent } from './lib/content'
 import { ANY_CLIENT, NODE_ENV } from './lib/env'
 import logger from './lib/logger'
 import pfx from './lib/pfx'
@@ -19,6 +20,8 @@ const errorBody = new Buffer(skeleton({
 }), 'utf8')
 
 sourceMapSupport.install({ handleUncaughtExceptions: false })
+
+prepareContent()
 
 const requestCert = !ANY_CLIENT && NODE_ENV === 'production'
 
