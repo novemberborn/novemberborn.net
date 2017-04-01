@@ -7,4 +7,5 @@ JavaScript or web-related projects.
 *Please, no recruitment companies.*
 
 Initial Commit Ltd is a registered company in England and Wales, no: 10125255.
-Its registered office is 71-75 Shelton Street, Covent Garden, London WC2H 9JQ.
+Its registered office address is First Floor, Telecom House, 125-135 Preston
+Road, Brighton, England, BN1 6AF
