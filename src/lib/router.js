@@ -2,7 +2,7 @@ import {
   content as contentPartial,
   notFound,
   skeleton
-} from 'glob:../templates/*.js'
+} from 'glob:../templates/*.handlebars.js'
 
 import { routes as staticRoutes } from './static-files'
 import {

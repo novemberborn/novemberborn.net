@@ -5,7 +5,7 @@ import { verify as verifyPullOrigin } from 'cloudflare-origin-pull'
 import convertHrTime from 'convert-hrtime'
 import sourceMapSupport from 'source-map-support'
 
-import { skeleton, serverError } from 'glob:templates/*.js'
+import { skeleton, serverError } from 'glob:./templates/*.handlebars.js'
 import { prepareCache as prepareContent } from './lib/content'
 import { ANY_CLIENT, NODE_ENV } from './lib/env'
 import logger from './lib/logger'

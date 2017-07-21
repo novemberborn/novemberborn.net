@@ -33,7 +33,7 @@
     "babel-cli": "^6.24.1",
     "babel-plugin-files": "^1.0.0",
     "babel-plugin-handlebars-inline-precompile": "^2.1.0",
-    "babel-plugin-import-glob": "^1.0.1",
+    "babel-plugin-import-glob": "^2.0.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
     "babel-plugin-transform-strict-mode": "^6.24.1",
     "cssnano": "^3.10.0",
@@ -68,8 +68,8 @@
     "compact": false,
     "plugins": [
       "handlebars-inline-precompile",
-      "import-glob",
       "files",
+      "import-glob",
       "transform-es2015-modules-commonjs",
       "transform-strict-mode"
     ]
