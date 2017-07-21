@@ -22,7 +22,7 @@ for (const name in files) {
   inverse.set(name, path)
 }
 
-const cacheSymbol = Symbol()
+const cacheSymbol = Symbol('cache key')
 async function getContents (file) {
   // Reuse promises in case of concurrent access.
   if (file[cacheSymbol]) return file[cacheSymbol]

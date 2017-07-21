@@ -14,7 +14,7 @@ import { route } from './lib/router'
 import securityHeaders from './lib/security-headers'
 import sentry from './lib/sentry'
 
-const errorBody = new Buffer(skeleton({
+const errorBody = Buffer.from(skeleton({
   title: '500 Internal Server Error',
   contentPartial: serverError
 }), 'utf8')

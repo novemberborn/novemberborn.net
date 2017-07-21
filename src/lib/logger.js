@@ -1,17 +1,16 @@
 import { Writable } from 'stream'
-import { isError } from 'util'
 
 import { createLogger, stdSerializers } from 'bunyan'
 import { parsers as sentryParsers } from 'raven'
 
-import { BUNYAN_LEVEL as level } from './env'
+import { BUNYAN_LEVEL } from './env'
 import sentry from './sentry'
 
 const errorTag = Symbol('logger error tag')
 const streams = []
 
 streams.push({
-  level,
+  level: BUNYAN_LEVEL,
   type: 'stream',
   stream: process.stdout
 })
@@ -74,7 +73,7 @@ const serializers = Object.assign({}, stdSerializers, {
   err (err) {
     // This is effectively what Bunyan's serializer does (except it checks for
     // the `stack` property).
-    if (!isError(err)) return err
+    if (Object.prototype.toString.call(err) !== '[object Error]') return err
 
     // Extract standard properties which may not be enumerable, and the
     // remainder.

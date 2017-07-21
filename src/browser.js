@@ -1,4 +1,5 @@
 'use strict'
+/* eslint-disable no-var */
 
 // Inspired by
 // <http://pingturtle.com/home/post/cloudflare-email-protection-decoder>.

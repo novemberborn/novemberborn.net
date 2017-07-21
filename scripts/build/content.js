@@ -7,15 +7,14 @@ const { join } = require('path')
 const mkdirp = require('mkdirp')
 const Remarkable = require('remarkable')
 
-const { files } = require('../../dist/lib/content')
-const { getPath } = require('../../dist/lib/static-files')
+const { files } = require('../../dist/lib/content') // eslint-disable-line import/no-unresolved
+const { getPath } = require('../../dist/lib/static-files') // eslint-disable-line import/no-unresolved
 
 const md = new Remarkable({
   html: true,
   typographer: true
-}).use(md => {
+}).use(({renderer: {rules}}) => {
   // Replace the image renderer so static file names can be used.
-  const { rules } = md.renderer
   const { image } = rules
   rules.image = (tokens, idx, ...remainder) => {
     const { src } = tokens[idx]

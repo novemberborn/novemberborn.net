@@ -74,7 +74,7 @@ export async function route (pathname, host) {
   if (staticRoutes.has(pathname)) {
     // Static routes contain a file hash, so they're safe to cache for a pretty
     // long while. That doesn't apply to the favicon though.
-    let maxAge = pathname === '/favicon.ico' ? TenDays : NinetyDays
+    const maxAge = pathname === '/favicon.ico' ? TenDays : NinetyDays
     const [chunk, { contentType, size: contentLength }] = await staticRoutes.get(pathname)
     return [200, Object.assign({
       'content-type': contentType,
@@ -84,7 +84,7 @@ export async function route (pathname, host) {
   }
 
   let statusCode = 200
-  let headers = {
+  const headers = {
     'content-type': 'text/html; charset=utf-8',
     // Cache for 4 ours in end-users browsers, and 10 days in CloudFlare. The
     // latter should help with the Always Online feature:
@@ -104,7 +104,7 @@ export async function route (pathname, host) {
     contentPartial,
     pathname
   }, context)
-  const body = new Buffer(skeleton(expandedContext), 'utf8')
+  const body = Buffer.from(skeleton(expandedContext), 'utf8')
   headers['content-length'] = body.length
 
   return [statusCode, Object.assign(headers, securityHeaders), body]
