@@ -2,8 +2,6 @@
 .dockerignore
 .env
 .gitignore
-.node-version
-build.Dockerfile
 Dockerfile
 nodemon.json
 README.md
