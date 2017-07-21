@@ -43,19 +43,19 @@
     "postcss-nested": "^2.0.4",
     "postcss-normalize": "^4.0.0",
     "remarkable": "^1.7.1",
-    "scripty": "^1.6.0",
+    "scripty": "^1.7.1",
     "stylelint": "^8.0.0",
     "stylelint-config-standard": "^17.0.0",
     "uglify-js": "^3.0.25"
   },
   "dependencies": {
-    "bunyan": "^1.8.1",
+    "bunyan": "^1.8.10",
     "cloudflare-origin-pull": "^1.0.1",
-    "convert-hrtime": "^1.0.0",
+    "convert-hrtime": "^2.0.0",
     "dotenv": "^4.0.0",
-    "handlebars": "^4.0.5",
-    "raven": "^0.12.1",
-    "source-map-support": "^0.4.3"
+    "handlebars": "^4.0.10",
+    "raven": "^0.12.3",
+    "source-map-support": "^0.4.15"
   },
   "as-i-preach": {
     "fakeDependencies": [
