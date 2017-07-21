@@ -46,7 +46,7 @@
     "scripty": "^1.6.0",
     "stylelint": "^8.0.0",
     "stylelint-config-standard": "^17.0.0",
-    "uglify-js": "^2.7.3"
+    "uglify-js": "^3.0.25"
   },
   "dependencies": {
     "bunyan": "^1.8.1",
