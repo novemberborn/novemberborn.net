@@ -1,7 +1,7 @@
 ###############################################################################
 # Build image                                                                 #
 ###############################################################################
-FROM node:8.2.0 as builder
+FROM node:8.5.0 as builder
 
 RUN apt-get update \
   && apt-get install -y jq=1.4-2.1+deb8u1 \
@@ -27,7 +27,7 @@ RUN rm -rf content node_modules scripts src
 ###############################################################################
 # Runtime image                                                               #
 ###############################################################################
-FROM node:8.2.0-slim
+FROM node:8.5.0-slim
 
 # Install https://github.com/Yelp/dumb-init so the server can be
 # started properly.
