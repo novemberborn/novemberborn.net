@@ -3,19 +3,13 @@
 ###############################################################################
 FROM node:8.11.2 as builder
 
-RUN apt-get update \
-  && apt-get install -y jq=1.4-2.1+deb8u1 \
-  && rm -rf /var/lib/apt/lists/*
-
 WORKDIR /app
-COPY scripts/create-package.jq ./scripts/
-COPY package-lock.json ./
-RUN jq -f scripts/create-package.jq package-lock.json > package.json \
-  && npm install --silent
+COPY package.json package-lock.json ./
+RUN npx npm@6.1.0 ci
 
 WORKDIR /deps
 RUN cp /app/package.json /app/package-lock.json ./ \
-  && npm install --silent --prefer-offline --production
+  && npx npm@6.1.0 install --only=production --silent
 
 WORKDIR /app
 COPY ./ ./
@@ -31,8 +25,8 @@ FROM node:8.11.2-slim
 
 # Install https://github.com/Yelp/dumb-init so the server can be
 # started properly.
-RUN curl -sSL "https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64" -o /usr/local/bin/dumb-init \
-  && echo "81231da1cd074fdc81af62789fead8641ef3f24b6b07366a1c34e5b059faf363 */usr/local/bin/dumb-init" | sha256sum -c - \
+RUN curl -sSL "https://github.com/Yelp/dumb-init/releases/download/v1.2.1/dumb-init_1.2.1_amd64" -o /usr/local/bin/dumb-init \
+  && echo "057ecd4ac1d3c3be31f82fc0848bf77b1326a975b4f8423fe31607205a0fe945 */usr/local/bin/dumb-init" | sha256sum -c - \
   && chmod +x /usr/local/bin/dumb-init
 
 # Never run as root
@@ -41,7 +35,8 @@ USER nodejs
 
 WORKDIR /app
 ENV NODE_ENV=production
-CMD ["dumb-init", "node", "dist/server.js"]
+ENTRYPOINT ["/usr/local/bin/dumb-init"]
+CMD ["node", "dist/server.js"]
 
 COPY --from=builder /deps ./
 COPY --from=builder /app ./
