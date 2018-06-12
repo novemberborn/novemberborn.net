@@ -77,6 +77,6 @@ person.
 
 ## Minutia
 
-I'm a Dutch national. I hold a Bachelor's degree from [University of
-Twente](https://www.utwente.nl/en/). I'm fluent in Dutch and English and fairly
-decent at comprehending German.
+I'm a dual Dutch and British citizen. I hold a Bachelor's degree from
+[University of Twente](https://www.utwente.nl/en/). I'm fluent in Dutch and
+English and fairly decent at comprehending German.
