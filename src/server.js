@@ -1,16 +1,16 @@
-import { createServer } from 'https'
-import { parse as parseUrl } from 'url'
+import {createServer} from 'https'
+import {parse as parseUrl} from 'url'
 
-import { verify as verifyPullOrigin } from 'cloudflare-origin-pull'
+import {verify as verifyPullOrigin} from 'cloudflare-origin-pull'
 import convertHrTime from 'convert-hrtime'
 import sourceMapSupport from 'source-map-support'
 
-import { skeleton, serverError } from 'glob:./templates/*.handlebars.js'
-import { prepareCache as prepareContent } from './lib/content'
-import { ANY_CLIENT, NODE_ENV } from './lib/env'
+import {skeleton, serverError} from 'glob:./templates/*.handlebars.js'
+import {prepareCache as prepareContent} from './lib/content'
+import {ANY_CLIENT, NODE_ENV} from './lib/env'
 import logger from './lib/logger'
 import pfx from './lib/pfx'
-import { route } from './lib/router'
+import {route} from './lib/router'
 import securityHeaders from './lib/security-headers'
 import sentry from './lib/sentry'
 
@@ -19,7 +19,7 @@ const errorBody = Buffer.from(skeleton({
   contentPartial: serverError
 }), 'utf8')
 
-sourceMapSupport.install({ handleUncaughtExceptions: false })
+sourceMapSupport.install({handleUncaughtExceptions: false})
 
 prepareContent()
 
@@ -31,12 +31,12 @@ createServer({
   rejectUnauthorized: false
 }, async (req, res) => {
   const start = process.hrtime()
-  logger.info({ req }, 'request-start')
+  logger.info({req}, 'request-start')
 
   try {
     if (requestCert && !verifyPullOrigin(req.client.getPeerCertificate())) {
       req.client.destroy()
-      logger.info({ req }, 'reject-client-certificate')
+      logger.info({req}, 'reject-client-certificate')
       return
     }
 
@@ -52,10 +52,10 @@ createServer({
       res.end()
     }
 
-    logger.error({ err, req }, 'server-request-listener-failure')
+    logger.error({err, req}, 'server-request-listener-failure')
   } finally {
     const duration = convertHrTime(process.hrtime(start))
-    logger.info({ req, res, duration }, 'request-finish')
+    logger.info({req, res, duration}, 'request-finish')
   }
 }).listen(8443, () => {
   logger.info('listening')
@@ -67,11 +67,11 @@ async function handleRequest (req) {
   }
 
   try {
-    const { pathname } = parseUrl(req.url)
-    const { headers: { host } } = req
+    const {pathname} = parseUrl(req.url)
+    const {headers: {host}} = req
     return await route(pathname, host)
   } catch (err) {
-    logger.error({ err, req }, 'server-handle-request-failure')
+    logger.error({err, req}, 'server-handle-request-failure')
 
     return [500, Object.assign({
       'content-type': 'text/html; charset=utf-8',

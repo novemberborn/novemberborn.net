@@ -1,7 +1,7 @@
 import Handlebars from 'handlebars/runtime'
 import hbs from 'handlebars-inline-precompile'
 
-import { getPath } from '../lib/static-files'
+import {getPath} from '../lib/static-files'
 
 export default hbs`<!DOCTYPE html>
 <html lang="en-US">
@@ -33,4 +33,4 @@ export default hbs`<!DOCTYPE html>
 </html>
 `
 
-Handlebars.registerHelper('static_path', ({ hash: { name } }) => getPath(name))
+Handlebars.registerHelper('static_path', ({hash: {name}}) => getPath(name))

@@ -4,12 +4,12 @@ import {
   skeleton
 } from 'glob:../templates/*.handlebars.js'
 
-import { routes as staticRoutes } from './static-files'
+import {routes as staticRoutes} from './static-files'
 import {
   get as getContent,
   projects
 } from './content'
-import { NODE_ENV } from './env'
+import {NODE_ENV} from './env'
 import securityHeaders from './security-headers'
 
 const FourHours = 4 * 60 * 60
@@ -52,7 +52,7 @@ for (const [subpath, contentName] of projects) {
   })
 }
 
-export { table }
+export {table}
 
 export async function route (pathname, host) {
   // Redirect away from pathnames ending in a slash.
@@ -75,7 +75,7 @@ export async function route (pathname, host) {
     // Static routes contain a file hash, so they're safe to cache for a pretty
     // long while. That doesn't apply to the favicon though.
     const maxAge = pathname === '/favicon.ico' ? TenDays : NinetyDays
-    const [chunk, { contentType, size: contentLength }] = await staticRoutes.get(pathname)
+    const [chunk, {contentType, size: contentLength}] = await staticRoutes.get(pathname)
     return [200, Object.assign({
       'content-type': contentType,
       'content-length': contentLength,
@@ -97,7 +97,7 @@ export async function route (pathname, host) {
     context = table[pathname]()
   } else {
     statusCode = 404
-    context = { contentPartial: notFound }
+    context = {contentPartial: notFound}
   }
 
   const expandedContext = Object.assign({

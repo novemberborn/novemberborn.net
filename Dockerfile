@@ -1,15 +1,15 @@
 ###############################################################################
 # Build image                                                                 #
 ###############################################################################
-FROM node:8.11.2 as builder
+FROM node:8.11.4 as builder
 
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npx npm@6.1.0 ci
+RUN npx npm@6.4.1 ci
 
 WORKDIR /deps
 RUN cp /app/package.json /app/package-lock.json ./ \
-  && npx npm@6.1.0 install --only=production --silent
+  && npx npm@6.4.1 install --only=production --silent
 
 WORKDIR /app
 COPY ./ ./
@@ -21,7 +21,7 @@ RUN rm -rf content node_modules scripts src
 ###############################################################################
 # Runtime image                                                               #
 ###############################################################################
-FROM node:8.11.2-slim
+FROM node:8.11.4-slim
 
 # Install https://github.com/Yelp/dumb-init so the server can be
 # started properly.

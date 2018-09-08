@@ -1,22 +1,22 @@
-import { readFileSync } from 'fs'
-import { basename, join, sep as fileSeparator } from 'path'
+import {readFileSync} from 'fs'
+import {basename, join, sep as fileSeparator} from 'path'
 
 import files from 'files:../../content/**/*.md'
 
-export { files }
+export {files}
 
 const cache = new Map()
 export function prepareCache () {
   const dir = join(__dirname, '..', 'content')
   Object.keys(files)
     .map(relpath => files[relpath])
-    .forEach(({ tag }) => {
+    .forEach(({tag}) => {
       cache.set(tag, readFileSync(join(dir, `${tag}.html`)))
     })
 }
 
 export function get (name) {
-  const { tag } = files[`${name}.md`]
+  const {tag} = files[`${name}.md`]
   return cache.get(tag)
 }
 

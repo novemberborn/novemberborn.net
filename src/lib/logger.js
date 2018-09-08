@@ -1,9 +1,9 @@
-import { Writable } from 'stream'
+import {Writable} from 'stream'
 
-import { createLogger, stdSerializers } from 'bunyan'
-import { parsers as sentryParsers } from 'raven'
+import {createLogger, stdSerializers} from 'bunyan'
+import {parsers as sentryParsers} from 'raven'
 
-import { BUNYAN_LEVEL } from './env'
+import {BUNYAN_LEVEL} from './env'
 import sentry from './sentry'
 
 const errorTag = Symbol('logger error tag')
@@ -30,7 +30,7 @@ if (sentry) {
     stream: new Writable({
       objectMode: true,
       write (record, _, done) {
-        const { err, level: bunyanLevel, msg } = record
+        const {err, level: bunyanLevel, msg} = record
         const level = sentryLevels.get(bunyanLevel)
 
         // Fatal is only used for uncaught exceptions, which are reported to
@@ -47,7 +47,7 @@ if (sentry) {
 
         // Capture the message unless the record is for a proper Error.
         if (!err || !err[errorTag]) {
-          sentry.captureMessage(msg, { extra, level })
+          sentry.captureMessage(msg, {extra, level})
           done()
           return
         }
@@ -60,7 +60,7 @@ if (sentry) {
         // `instanceof Error`. Bunyan returns a regular object, which the
         // configured serializer has tagged as originally being a proper
         // error.
-        sentryParsers.parseError(err, { extra, level }, kwargs => {
+        sentryParsers.parseError(err, {extra, level}, kwargs => {
           sentry.process(kwargs)
           done()
         })
@@ -77,9 +77,9 @@ const serializers = Object.assign({}, stdSerializers, {
 
     // Extract standard properties which may not be enumerable, and the
     // remainder.
-    const { message, name, code, signal } = err
+    const {message, name, code, signal} = err
     // Use Bunyan to get the stack trace.
-    const { stack } = stdSerializers.err(err)
+    const {stack} = stdSerializers.err(err)
     // Put the standard properties back on the result object.
     return Object.assign({}, err, {
       [errorTag]: true, // Tag the object so the Sentry stream can recognize it.
@@ -91,7 +91,7 @@ const serializers = Object.assign({}, stdSerializers, {
     })
   },
 
-  duration ({ ms }) {
+  duration ({ms}) {
     return ms
   }
 })

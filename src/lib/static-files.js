@@ -1,4 +1,4 @@
-import { readFile } from 'fs'
+import {readFile} from 'fs'
 
 import staticFiles from 'files:../../static/*.*'
 import browserFiles from 'files:../../dist/{browser,style}.*'
@@ -15,7 +15,7 @@ for (const name in files) {
     path = '/favicon.ico'
   } else if (name.endsWith('.map')) {
     // Source maps are relative to the tag of the file they apply to.
-    const { tag } = files[name.slice(0, -4)]
+    const {tag} = files[name.slice(0, -4)]
     path = `/static/${tag}/${name}`
   }
   paths.set(path, file)

@@ -28,7 +28,7 @@
   "homepage": "https://github.com/novemberborn/novemberborn.net#readme",
   "license": "UNLICENSED",
   "devDependencies": {
-    "@novemberborn/as-i-preach": "^10.1.0",
+    "@novemberborn/as-i-preach": "^11.0.0",
     "autoprefixer": "^7.1.2",
     "babel-cli": "^6.26.0",
     "babel-plugin-files": "^1.0.0",
@@ -38,22 +38,22 @@
     "babel-plugin-transform-strict-mode": "^6.24.1",
     "cssnano": "^3.10.0",
     "mkdirp": "^0.5.1",
-    "nodemon": "^1.17.5",
+    "nodemon": "^1.18.4",
     "postcss-cli": "^4.1.0",
     "postcss-nested": "^2.0.4",
     "postcss-normalize": "^4.0.0",
     "remarkable": "^1.7.1",
-    "scripty": "^1.7.1",
+    "scripty": "^1.7.2",
     "stylelint": "^8.0.0",
     "stylelint-config-standard": "^17.0.0",
-    "uglify-js": "^3.0.25"
+    "uglify-js": "^3.4.9"
   },
   "dependencies": {
-    "bunyan": "^1.8.10",
+    "bunyan": "^1.8.12",
     "cloudflare-origin-pull": "^1.0.1",
     "convert-hrtime": "^2.0.0",
     "dotenv": "^4.0.0",
-    "handlebars": "^4.0.10",
+    "handlebars": "^4.0.12",
     "raven": "^0.12.3",
     "source-map-support": "^0.4.15"
   },

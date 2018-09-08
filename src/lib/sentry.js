@@ -1,4 +1,4 @@
-import { Client, utils } from 'raven'
+import {Client, utils} from 'raven'
 
 import {
   NODE_ENV as environment,
@@ -11,7 +11,7 @@ utils.getModules = () => ({})
 let client = null
 if (environment === 'production' && SENTRY_DSN) {
   client = new Client(SENTRY_DSN, {
-    tags: { environment }
+    tags: {environment}
   })
 }
 
