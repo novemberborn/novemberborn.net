@@ -1,7 +1,7 @@
 ###############################################################################
 # Build image                                                                 #
 ###############################################################################
-FROM node:8.11.4 as builder
+FROM node:8.14.0 as builder
 
 WORKDIR /app
 COPY package.json package-lock.json ./
@@ -21,7 +21,7 @@ RUN rm -rf content node_modules scripts src
 ###############################################################################
 # Runtime image                                                               #
 ###############################################################################
-FROM node:8.11.4-slim
+FROM node:8.14.0-slim
 
 # Install https://github.com/Yelp/dumb-init so the server can be
 # started properly.
