@@ -51,7 +51,7 @@
       "dest": "/skills-and-background.html"
     },
     {
-      "src": "/(browser\\.js|style\\.css|static\/.+)",
+      "src": "/(browser\\.js(\\.map)?|style\\.css|static\/.+)",
       "dest": "/$1"
     },
     {
