@@ -48,12 +48,12 @@ try {
   fs.mkdirSync('dist/content')
 } catch (_) {}
 
-function skeleton (content, pathname = '') {
+function skeleton (content, {pathname = '', title = ''} = {}) {
   return `<!DOCTYPE html>
 <html lang="en-US">
   <head>
     <meta charset="utf-8">
-    <title>novemberborn.net</title>
+    <title>${title ? Remarkable.utils.escapeHtml(title) + ' — ' : ''}novemberborn.net</title>
     <link rel="stylesheet" href="/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="apple-touch-icon-precomposed" href="/static/favicon-152.png">
@@ -84,12 +84,19 @@ function skeleton (content, pathname = '') {
 
 for (const relpath of markdownContent) {
   const pathname = relpath === 'home.md' ? '/' : `/${relpath.replace(/\.md$/, '')}`
-
   const src = path.join('content', relpath)
+  const raw = fs.readFileSync(src, 'utf8')
+  const ast = md.parse(raw, {})
+
+  let title = ''
+  if (ast.length >= 3 && ast[0].type === 'heading_open' && ast[1].type === 'inline') {
+    title = ast[1].content
+  }
+
   const dest = path.join('dist', relpath.replace(/\.md$/, '.html'))
   mkdirp.sync(path.dirname(dest))
-  const content = md.render(fs.readFileSync(src, 'utf8'))
-  fs.writeFileSync(dest, skeleton(content, pathname))
+
+  fs.writeFileSync(dest, skeleton(md.render(raw), {pathname, title}))
   console.log(`${src} -> ${dest}`)
 }
 
@@ -101,4 +108,4 @@ fs.writeFileSync(path.join('dist', '404.html'), skeleton(`<article>
     <a href="javascript:location.url=\`https://web.archive.org/web/2012*/\${document.URL}\`">existed previously</a> though.
   </p>
 </article>
-`))
+`, {title: 'Fower Zero Fower'}))
