@@ -94,10 +94,8 @@ for (const relpath of markdownContent) {
 }
 
 fs.writeFileSync(path.join('dist', '404.html'), skeleton(`<article>
-  <h1>Fife Zero Zero</h1>
-  <p>
-    <img src="/static/empty-rowboat.jpg" alt="An empty rowboat, signifying the failure in serving the page" class="invert">
-  </p>
+  <h1>Fower Zero Fower</h1>
+  <p><img src="/static/empty-rowboat.jpg" alt="An empty rowboat, signifying the missing page"></p>
   <p>
     The page you requested could not be found. It may have
     <a href="javascript:location.url=\`https://web.archive.org/web/2012*/\${document.URL}\`">existed previously</a> though.
