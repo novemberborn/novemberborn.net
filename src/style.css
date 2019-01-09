@@ -96,7 +96,3 @@ main {
     border-bottom-width: 1px;
   }
 }
-
-.invert {
-  filter: invert(100%);
-}
