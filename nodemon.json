@@ -1,8 +1,0 @@
-{
-  "exec": "node dist/server.js",
-  "env": {
-    "CERT_NAME": "",
-    "NODE_ENV": "development"
-  },
-  "watch": ["dist/"]
-}
