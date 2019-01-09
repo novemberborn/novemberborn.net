@@ -105,7 +105,7 @@ fs.writeFileSync(path.join('dist', '404.html'), skeleton(`<article>
   <p><img src="/static/empty-rowboat.jpg" alt="An empty rowboat, signifying the missing page"></p>
   <p>
     The page you requested could not be found. It may have
-    <a href="javascript:location.url=\`https://web.archive.org/web/2012*/\${document.URL}\`">existed previously</a> though.
+    <a href="javascript:location.href=\`https://web.archive.org/web/2012*/\${document.URL}\`">existed previously</a> though.
   </p>
 </article>
 `, {title: 'Fower Zero Fower'}))
