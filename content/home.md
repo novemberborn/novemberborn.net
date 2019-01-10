@@ -1,5 +1,5 @@
-![The author rowing a boat, donning a fabulous tweed
-cap](rowing.jpg)
+![The author after getting married, donning a fabulous tweed
+cap](wedding.jpg)
 
 Hi! My name's Mark Wubben. I'm a humanist & technologist who loves working with
 the web. In the above picture I'm wearing a fabulous [Irish tweed
