@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "alias": [
+    "www.novemberborn.net"
+  ],
+  "builds": [
+    { "src": "index.html", "use": "@now/static" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "status": 301, "headers": { "Location": "https://novemberborn.net/$1" }}
+  ]
+}
