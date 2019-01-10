@@ -2,8 +2,7 @@
 
 I've been working with the web professionally for over ten years. Initially a
 front-end engineer I'm now interested in backend systems, JavaScript tooling and
-product development. I'm open to challenging projects, perhaps you want to [work
-with me](/consulting)?
+product development.
 
 I'm good at considering problems from multiple angles, including the
 non-technical ones. I frequently work at different levels of abstraction, e.g.
@@ -20,10 +19,8 @@ frameworks.
 I'm also experienced with [AWS](https://aws.amazon.com/),
 [Docker](https://www.docker.com/) and [CoreOS](https://coreos.com/).
 
-I'm accustomed to contributing to open-source projects, for instance I'm part of
-the team behind [AVA](https://github.com/avajs/ava) and a collaborator on
-[Istanbul](https://github.com/istanbuljs/), primarily through my contributions
-to [nyc](https://github.com/istanbuljs/nyc), the Istanbul CLI.
+I'm accustomed to contributing to open-source projects, for instance I'm the
+lead mantainer of [AVA](https://github.com/avajs/ava).
 
 ## Background
 
@@ -32,11 +29,12 @@ Way back when in 2004 / 2005 I helped develop
 in custom fonts. I kept up maintenance until 2008. This was before [web
 fonts](https://en.wikipedia.org/wiki/Web_Open_Font_Format), of course.
 
-I'm a contributor to the [Dojo Toolkit](https://dojotoolkit.org/). I wrote the
-`dojo/promise` implementation that shipped in [Dojo
+I'm a former contributor to the [Dojo Toolkit](https://dojotoolkit.org/). I
+wrote the `dojo/promise` implementation that shipped in [Dojo
 1.8](http://dojotoolkit.org/reference-guide/1.8/dojo/promise.html) back in 2012.
 Subsequently I've been involved in the [Promises/A+](https://promisesaplus.com/)
-effort, and have written some more [promise implementations](/projects/legendary).
+effort, and have written some more [promise
+implementations](/projects/legendary).
 
 From 2005 through 2008 I worked for [Q42](https://q42.com/) and
 [Xopus](https://xopus.com/) (which was spun off from Q42 and later acquired by
@@ -70,10 +68,6 @@ Early on the front-end was separated by the back-end through an API layer, which
 grew to power Android & iOS clients. I was in charge of the API server and its
 OAuth implementation, contributing to [RFC
 7009](https://tools.ietf.org/html/rfc7009).
-
-As you can imagine I was involved with many more projects and challenges than I
-can easily put into words here. I'd be more than happy to discuss these in
-person.
 
 ## Minutia
 
