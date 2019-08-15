@@ -24,7 +24,7 @@ Show](http://daringfireball.net/thetalkshow/).
 I've been working with the web professionally for over ten years. Initially a
 front-end engineer I'm now interested in backend systems, JavaScript tooling and
 product development. Currently I work as principal product engineer at
-[Token](https://tokencard.io).
+[Monolith](https://monolith.xyz).
 
 [Learn more about my skills and background](/skills-and-background).
 
