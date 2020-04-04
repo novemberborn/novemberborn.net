@@ -67,7 +67,6 @@ function skeleton (content, {pathname = '', title = ''} = {}) {
       <nav>
         <a href="/skills-and-background">Skills &amp; Background</a>,
         <a href="/projects">Projects</a>,
-        <a href="/consulting">Consulting</a>,
         <a href="/colophon">Colophon</a>
       </nav>
     </header>

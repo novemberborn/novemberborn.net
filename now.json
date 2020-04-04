@@ -19,10 +19,6 @@
       "dest": "/colophon.html"
     },
     {
-      "src": "/consulting",
-      "dest": "/consulting.html"
-    },
-    {
       "src": "/projects",
       "dest": "/projects.html"
     },

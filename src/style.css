@@ -39,8 +39,7 @@ header {
 
     body[data-pathname="/colophon"] &[href="/colophon"],
     body[data-pathname="/skills-and-background"] &[href="/skills-and-background"],
-    body[data-pathname^="/projects"] &[href="/projects"],
-    body[data-pathname^="/consulting"] &[href="/consulting"] {
+    body[data-pathname^="/projects"] &[href="/projects"] {
       background: #fefee2;
     }
   }
