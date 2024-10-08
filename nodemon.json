@@ -1,0 +1,5 @@
+{
+  "verbose": true,
+  "ignore": ["public"],
+  "ext": "js,css,html,md,jpg,png,ico"
+}
