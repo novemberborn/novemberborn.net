@@ -1,19 +1,23 @@
-![The author donning a fabulous tweed cap](author.jpg)
+---
+filename: index.html
+pathname: /
+description: Online home of Mark Wubben, engineering leader and open source maintainer.
+---
 
-Hi! My name's Mark Wubben. I build products and teams that build products. In the above picture I'm wearing a fabulous [Irish tweed cap](http://www.aransweatermarket.com/irish-tweed-flat-caps). You could <a data-email="bcd1ddced7fcd2d3cad9d1ded9ceded3ced292d2d9c8">send me an email</a>.
+<p><img alt="The author and his dog" src="/assets/author.webp" width="346" height="346"></p>
 
-Having grown up in the Netherlands I've lived in Copenhagen and London, though now I'm in the Netherlands again. I enjoy cycling & walking, decent beer or whisky, coffee and cake, podcasts and TV shows. Oddly enough my [favorite](https://hawksleyworkman.com) [musicians](https://www.whitehorsemusic.ca) [hail](https://portcities.ca) from Canada.
+Hey! You've found the online home of Mark Wubben. Over on the right is me and my dog, an overly friendly Shih Tzu × Yorkshire Terrier lass.
 
-## Skills & Background
+Having grown up in the Netherlands, I've lived in Copenhagen and London, and now find myself in the original Haarlem with <abbr title="spouse">👩‍💻</abbr>, <abbr title="kid">👶</abbr> and <abbr title="dog">🐶</abbr>.
 
-I've been working with the web professionally for over fifteen years. Initially a front-end engineer I'm now interested in backend systems, JavaScript tooling and product development. Currently I work as principal product engineer at [Monolith](https://monolith.xyz).
+I enjoy genmaicha & rooibos tea, pour-over coffee & brownies, science-fiction shows, podcasts, the woods, and fairly obscure Canadian musicians.
 
-[Learn more about my skills and background](/skills-and-background).
+## Work
 
-## Projects
+I'm an engineering leader with a strong technical background, who values team collaboration and supporting individual growth. I excel at navigating difficult technological and business trade-offs in medium-sized teams.
 
-I'm the lead maintainer of [AVA](https://github.com/avajs/ava), a Node.js test runner. I also maintain several other [Node.js modules](/projects/nodejs).
+I'm open to new opportunities. [Learn more about my work](/work) and <a data-email="bcd1ddced7fcd2d3cad9d1ded9ceded3ced292d2d9c8">get in touch</a>.
 
-## Elsewhere
+## Open Source
 
-I post the occasional [tweet](https://twitter.com/novemberborn) or [photo](https://www.instagram.com/novemberborn/). I'm on [GitHub](https://github.com/novemberborn) and [Keybase](https://keybase.io/novemberborn).
+I've been involved in open source projects for over twenty years. My more recent contributions come as lead maintainer of [AVA](https://github.com/avajs/ava), a Node.js test runner. [Find out more about my open source projects](/open-source).

@@ -1,110 +1,129 @@
 #!/usr/bin/env node
-'use strict'
+import fs from 'node:fs/promises'
+import path from 'node:path'
+import { JSDOM } from 'jsdom'
+import markdownFactory from 'markdown-it'
+import YAML from 'yaml'
 
-const fs = require('fs')
-const path = require('path')
-
-const execa = require('execa')
-const glob = require('glob')
-const mkdirp = require('mkdirp')
-const Remarkable = require('remarkable')
-
-const markdownContent = glob.sync('**/*.md', {cwd: 'content'})
-
-try {
-  fs.mkdirSync('dist')
-} catch (_) {}
-
-execa.sync('postcss', ['src/style.css', '--output', 'dist/style.css'])
-execa.sync('uglifyjs', [
-  '-c', '-m',
-  '-o', 'dist/browser.js',
-  '--source-map', 'filename=dist/browser.js.map',
-  '--source-map', 'includeSources',
-  'src/browser.js'
-])
-execa.shellSync('echo "//# sourceMappingURL=./browser.js.map" >> dist/browser.js')
-execa.shellSync('cp -r static dist')
-
-const md = new Remarkable({
+const markdown = markdownFactory({
   html: true,
-  typographer: true
-}).use(({renderer: {rules}}) => {
-  // Replace the image renderer so static file names can be used.
-  const {image} = rules
-  rules.image = (tokens, idx, ...remainder) => {
-    const {src} = tokens[idx]
-    if (!src.includes('/')) {
-      // If the source includes a / it should be left as-is, it won't match a
-      // static file.
-      tokens[idx].src = `/static/${src}`
-    }
-
-    return image(tokens, idx, ...remainder)
-  }
+  typographer: true,
 })
 
-try {
-  fs.mkdirSync('dist/content')
-} catch (_) {}
+const PREFETCH_PATHS = ['/', '/work', '/open-source']
 
-function skeleton (content, {pathname = '', title = ''} = {}) {
-  return `<!DOCTYPE html>
-<html lang="en-US">
-  <head>
-    <meta charset="utf-8">
-    <title>${title ? Remarkable.utils.escapeHtml(title) + ' — ' : ''}novemberborn.net</title>
-    <link rel="stylesheet" href="/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="apple-touch-icon-precomposed" href="/static/favicon-152.png">
-    <script src="/browser.js" defer></script>
-    ${pathname ? `<link rel="canonical" href="https://novemberborn.net${pathname}">` : ''}
-  </head>
+// Load the layout template.
+const LAYOUT = await fs.readFile('layouts/layout.html', 'utf8')
 
-  <body data-pathname="${pathname}">
-    <header>
-      <h1><a href="/">novemberborn.net</a></h1>
-      <nav>
-        <a href="/skills-and-background">Skills &amp; Background</a>,
-        <a href="/projects">Projects</a>,
-        <a href="/colophon">Colophon</a>
-      </nav>
-    </header>
+// Render the layout with the given content, title and pathname.
+function render({ title, pathname, description, content }) {
+  const layout = new JSDOM(LAYOUT, {})
 
-    <main>
-      <article>
-        ${content}
-      </article>
-    </main>
-  </body>
-</html>
-`
-}
-
-for (const relpath of markdownContent) {
-  const pathname = relpath === 'home.md' ? '/' : `/${relpath.replace(/\.md$/, '')}`
-  const src = path.join('content', relpath)
-  const raw = fs.readFileSync(src, 'utf8')
-  const ast = md.parse(raw, {})
-
-  let title = ''
-  if (ast.length >= 3 && ast[0].type === 'heading_open' && ast[1].type === 'inline') {
-    title = ast[1].content
+  // Remove any whitespace-only text nodes from the layout and otherwise normalize them.
+  const walker = layout.window.document.createTreeWalker(layout.window.document.documentElement, 4)
+  const textNodes = []
+  while (walker.nextNode()) {
+    textNodes.push(walker.currentNode)
   }
 
-  const dest = path.join('dist', relpath.replace(/\.md$/, '.html'))
-  mkdirp.sync(path.dirname(dest))
+  for (const textNode of textNodes) {
+    if (textNode.nodeValue.trim() === '') {
+      textNode.remove()
+    } else if (/\s+/m.test(textNode.nodeValue)) {
+      textNode.nodeValue = textNode.nodeValue.replaceAll(/\s+/gm, ' ')
+    }
+  }
 
-  fs.writeFileSync(dest, skeleton(md.render(raw), {pathname, title}))
-  console.log(`${src} -> ${dest}`)
+  // Customize document title.
+  if (title) {
+    layout.window.document.title = `${title}\u2008·\u2008${layout.window.document.title}`
+  }
+
+  // Set the canonical URL.
+  if (pathname) {
+    const element = layout.window.document.createElement('link')
+    element.rel = 'canonical'
+    element.href = new URL(pathname, 'https://novemberborn.net').href
+    layout.window.document.querySelector('head').append(element)
+  }
+
+  // Prefetch internal links.
+  for (const prefetchPath of PREFETCH_PATHS) {
+    if (prefetchPath === pathname) {
+      continue
+    }
+
+    const element = layout.window.document.createElement('link')
+    element.rel = 'prefetch'
+    element.href = prefetchPath
+    layout.window.document.querySelector('head').append(element)
+  }
+
+  if (description) {
+    const element = layout.window.document.createElement('meta')
+    element.name = 'description'
+    element.content = description
+    layout.window.document.querySelector('title').insertAdjacentElement('afterend', element)
+  }
+
+  // Highlight the current page in the navigation.
+  const currentAnchor = layout.window.document.querySelector(`header a[href="${pathname}"]`)
+  currentAnchor?.classList.add('current')
+
+  // Insert the content.
+  layout.window.document.querySelector('article').append(JSDOM.fragment(content))
+
+  // Return the rendered HTML.
+  return layout.serialize()
 }
 
-fs.writeFileSync(path.join('dist', '404.html'), skeleton(`<article>
-  <h1>Fower Zero Fower</h1>
-  <p><img src="/static/empty-rowboat.jpg" alt="An empty rowboat, signifying the missing page"></p>
-  <p>
-    The page you requested could not be found. It may have
-    <a href="javascript:location.href=\`https://web.archive.org/web/2012*/\${document.URL}\`">existed previously</a> though.
-  </p>
-</article>
-`, {title: 'Fower Zero Fower'}))
+// Remove previously published content.
+for await (const entry of fs.glob('public/**/*.html')) {
+  await fs.rm(entry)
+}
+
+// Publish default 404 page.
+await fs.writeFile(
+  'public/404.html',
+  render({
+    title: '404 Not Found',
+    content: `<h1>Not found</h1>
+<p>The page you requested could not be found. You could try <a href="javascript:location.href=\`https://web.archive.org/web/2012*/\${document.URL}\`">the Wayback Machine</a>.</p>`,
+  }),
+)
+
+// Render and publish the content.
+const FRONT_MATTER_START = '---\n'
+const FRONT_MATTER_END = '\n---\n'
+
+for await (const contentPath of fs.glob('content/**/*.md')) {
+  const pathname = contentPath.replace(/^content\//, '/').replace(/\.md$/, '')
+  const options = {
+    filename: `${pathname}.html`,
+    pathname,
+  }
+
+  const rawContent = await fs.readFile(contentPath, 'utf8')
+  let markdownContent = rawContent
+  if (rawContent.startsWith(FRONT_MATTER_START) && rawContent.includes(FRONT_MATTER_END)) {
+    const endIndex = rawContent.indexOf(FRONT_MATTER_END)
+    markdownContent = rawContent.slice(endIndex + FRONT_MATTER_END.length).trimStart()
+
+    const yamlString = rawContent.slice(FRONT_MATTER_START.length, endIndex)
+    const customOptions = YAML.parse(yamlString)
+    Object.assign(options, customOptions)
+  }
+
+  // Extract the title from the first heading. It can be overridden in the YAML front matter.
+  let title = ''
+  const tokens = markdown.parse(markdownContent, {})
+  const headingToken = tokens.findIndex((t) => t.type === 'heading_open' && t.tag === 'h1')
+  if (headingToken !== -1) {
+    title = tokens[headingToken + 1].content
+  }
+
+  const htmlContent = markdown.render(markdownContent)
+  const dirname = path.dirname(options.filename)
+  await fs.mkdir(`public/${dirname}`, { recursive: true })
+  await fs.writeFile(`public/${options.filename}`, render({ title, ...options, content: htmlContent }))
+}

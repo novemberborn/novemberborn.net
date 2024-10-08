@@ -3,9 +3,12 @@
   "name": "@novemberborn/website",
   "version": "2.0.0",
   "description": "Behind the scenes of https://novemberborn.net/",
+  "type": "module",
   "scripts": {
-    "now-build": "scripts/build.js",
-    "test": "as-i-preach && stylelint src/**/*.css"
+    "build": "scripts/build.js",
+    "build:watch": "nodemon scripts/build.js",
+    "start": "serve public/",
+    "test": "prettier --check . && xo"
   },
   "repository": {
     "type": "git",
@@ -16,41 +19,17 @@
   },
   "homepage": "https://github.com/novemberborn/novemberborn.net#readme",
   "license": "UNLICENSED",
+  "volta": {
+    "node": "22.9.0"
+  },
   "devDependencies": {
-    "@novemberborn/as-i-preach": "^11.0.0",
-    "autoprefixer": "^7.1.2",
-    "cssnano": "^3.10.0",
-    "execa": "^1.0.0",
-    "glob": "^7.1.3",
-    "mkdirp": "^0.5.1",
-    "postcss-cli": "^4.1.0",
-    "postcss-nested": "^2.0.4",
-    "postcss-normalize": "^4.0.0",
-    "remarkable": "^1.7.1",
-    "stylelint": "^8.0.0",
-    "stylelint-config-standard": "^17.0.0",
-    "uglify-js": "^3.4.9"
-  },
-  "postcss": {
-    "map": true,
-    "plugins": {
-      "postcss-normalize": {},
-      "postcss-nested": {},
-      "autoprefixer": {
-        "browsers": [
-          "last 2 versions"
-        ]
-      },
-      "cssnano": {
-        "autoprefixer": false,
-        "discardComments": {
-          "removeAll": true
-        }
-      }
-    }
-  },
-  "stylelint": {
-    "extends": "stylelint-config-standard"
-  },
-  "standard-engine": "@novemberborn/as-i-preach"
+    "jsdom": "^25.0.0",
+    "markdown-it": "^14.1.0",
+    "nodemon": "^3.1.6",
+    "prettier": "^3.3.3",
+    "prettier-plugin-css-order": "^2.1.2",
+    "serve": "^14.2.3",
+    "xo": "^0.59.3",
+    "yaml": "^2.5.1"
+  }
 }
