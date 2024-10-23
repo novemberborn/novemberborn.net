@@ -20,16 +20,16 @@
   "homepage": "https://github.com/novemberborn/novemberborn.net#readme",
   "license": "UNLICENSED",
   "volta": {
-    "node": "22.9.0"
+    "node": "22.10.0"
   },
   "devDependencies": {
-    "jsdom": "^25.0.0",
+    "jsdom": "^25.0.1",
     "markdown-it": "^14.1.0",
-    "nodemon": "^3.1.6",
+    "nodemon": "^3.1.7",
     "prettier": "^3.3.3",
     "prettier-plugin-css-order": "^2.1.2",
-    "serve": "^14.2.3",
+    "serve": "^14.2.4",
     "xo": "^0.59.3",
-    "yaml": "^2.5.1"
+    "yaml": "^2.6.0"
   }
 }
