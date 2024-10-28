@@ -38,9 +38,7 @@ Proud achievements (given the technology available at the time) include:
 - An OAuth implementation including social sign-on, across web and mobile
 - Push notification delivery
 
-## Consulting
-
-<a id="consulting"></a>
+## Consulting {#consulting}
 
 I've done consulting work for [SitePen](https://sitepen.com/) on [Dojo 2](https://dojo.io/) and [Digital Catapult](https://www.digicatapult.org.uk) on blockchain projects.
 

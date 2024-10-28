@@ -3,12 +3,18 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import { JSDOM } from 'jsdom'
 import markdownFactory from 'markdown-it'
+import markdownAttrs from 'markdown-it-attrs'
+import markdownAnchor from 'markdown-it-anchor'
 import YAML from 'yaml'
 
 const markdown = markdownFactory({
   html: true,
   typographer: true,
 })
+  .use(markdownAttrs)
+  .use(markdownAnchor, {
+    level: Number.MAX_SAFE_INTEGER, // Disable automatic anchor generation.
+  })
 
 const PREFETCH_PATHS = ['/', '/work', '/open-source']
 
