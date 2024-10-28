@@ -201,6 +201,11 @@ main h3::before {
   color: inherit;
 }
 
+main :target::before {
+  content: '➜\0000A0';
+  color: var(--orange-highlight);
+}
+
 main img {
   float: right;
   box-sizing: border-box;
