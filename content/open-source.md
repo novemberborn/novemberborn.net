@@ -10,9 +10,13 @@ These projects have given me a chance to contribute to a commmunity, scratch an 
 
 Most code is still out there, on my [npm](https://www.npmjs.com/~novemberborn) or [GitHub](https://github.com/novemberborn) accounts. Here I've highlighted those that are exceptionally interesting or useful today.
 
+---
+
 First, of course, is [AVA](https://github.com/avajs/ava), a Node.js test runner. This project was originally started by [Sindre Sorhus](https://sindresorhus.com/). I joined in 2016 and have pushed a lot of the development since.
 
 [Concordance](https://github.com/concordancejs/) compares, formats, diffs and snapshots any JavaScript value. It was created to power AVA's snapshot feature.
+
+---
 
 Other Node.js modules include:
 

@@ -181,11 +181,6 @@ main h1 {
 
 main h2 {
   font-size: 1.8rem;
-  text-decoration-line: underline;
-  text-decoration-style: dashed;
-  text-decoration-color: var(--navigation-separator);
-  text-decoration-thickness: 0.15rem;
-  text-underline-offset: 0.5rem;
 }
 
 main h2 + p {
@@ -194,6 +189,16 @@ main h2 + p {
 
 main h3 {
   font-size: 1.4rem;
+}
+
+main h2::before {
+  content: '❦\0000A0';
+  color: var(--navigation-separator);
+}
+
+main h3::before {
+  content: '❦\0000A0';
+  color: inherit;
 }
 
 main img {
@@ -210,10 +215,16 @@ main ul {
 }
 
 main hr {
-  margin: calc(2 * var(--spacing)) auto;
-  border: 0 solid var(--navigation-separator);
-  border-bottom-width: 1px;
-  width: 30%;
+  margin: var(--spacing) 0;
+  border: none;
+  height: auto;
+}
+
+main hr::before {
+  content: '✱\0000A0✱\0000A0✱';
+  color: var(--navigation-separator);
+  font-size: 0.75rem;
+  text-align: center;
 }
 
 footer {
