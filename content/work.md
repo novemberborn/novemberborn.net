@@ -25,7 +25,7 @@ An overview of the major products I've worked on in the past fifteen-odd years. 
 
 ### Token.com
 
-_Token.com_ is a mass-market consumer crypto platform summarized as “TikTok for Tokens.”
+[_Token.com_](https://token.com) is a mass-market consumer crypto platform summarized as “TikTok for Tokens.”
 
 It was spun out of [_Monolith_](#monolith), with development starting in early 2021. The product was launched in Brazil, first with a yield-generating token and then pivoting to a custodial token trading platform, before adding social features like posts and videos most easily summarized as “TikTok for Tokens.”
 
