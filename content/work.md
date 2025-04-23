@@ -1,10 +1,10 @@
 # Work
 
-I'm an engineering leader with a strong technical background, who values team collaboration and supporting individual growth. I excel at navigating difficult technological and business trade-offs in medium-sized teams.
+I'm a Staff+ Engineer with 15+ years of experience driving technical excellence and solving complex systems challenges. Throughout my career, I've combined hands-on technical expertise with strategic vision to deliver innovative solutions that create real business value. I have a proven track record of architectural leadership in distributed systems, event-driven architectures, and developer tooling, including leading the widely-used AVA test runner.
 
-Presently I'm looking to build products that enable <abbr title="Small-to-Medium Enterprises">SMEs</addr> to thrive. I can provide most value to a small team that's looking to grow, or a medium-sized team that's looking to improve.
+After several years in engineering leadership roles, I'm now focused on leveraging my technical depth and leadership experience to drive impactful engineering initiatives as an Individual Contributor. I thrive when collaborating effectively across product, design, and business disciplines to solve challenging technical problems that deliver meaningful outcomes.
 
-If that's you, and you're focused on making your own business thrive in tandem, then <a data-email="bcd1ddced7fcd2d3cad9d1ded9ceded3ced292d2d9c8">get in touch</a>.
+[View my LinkedIn profile](https://www.linkedin.com/in/novemberborn/) or <a data-email="bcd1ddced7fcd2d3cad9d1ded9ceded3ced292d2d9c8">get in touch</a>.
 
 ---
 
